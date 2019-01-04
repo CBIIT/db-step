@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bd_step_home</id>
+        <internal>false</internal>
+        <link/>
+        <name>BD STEP home</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-03 22:00:04</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>BD STEP home</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-04 15:03:09</sys_updated_on>
+        <template><![CDATA[<div>
+  <br/><br/>
+  <div class="row">
+     <div class="col-md-12" align="center">
+       <label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP)</font></label>
+    </div>  
+  </div>
+  <br/>
+  <div class="row">
+     <div class="col-md-12">
+       <p>
+         Recent advances in cancer biology have resulted in the need for increased statistical analysis of research data. The Statistical Analysis 
+         of Research Data (SARD) course will be held on January 8-9, 2019 from 9 a.m.-5 p.m. at the National Institutes of Health's Natcher Conference Center,
+         Balcony B on the Bethesda Campus. SARD is designed to provide an overview on the general principles of statistical analysis of research data. 
+         The course will be taught by Paul W. Thurman of Columbia University. The first day will feature univariate data analysis, including descriptive statistics, 
+         probability distributions, one- and two-sample inferential statistics. The second day will feature bivariate data analysis including bivariate statistics, 
+         linear regression non-parametric tools and goodness of fit tests. The participation of NIH clinical and postdoctoral fellows is encouraged.
+       </p>
+    </div>
+  </div>
+	<br/>
+  <div class="row">
+    <div class="col-md-12">
+      <label><font size="5">Course Materials</font></label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+			<ul>
+        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20Agenda.pdf" target="_BLANK">Course Agenda</a></li>
+        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20First%20Assignment.pdf" target="_BLANK">SARD First Assignment.pdf</a></li>
+        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20Thurman%20Bio.pdf" target="_BLANK">SARD Thurman Bio.pdf</a></li>
+      </ul>      
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-md-12">
+      <label><font size="5">Location and Time</font></label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        The sessions will start at 9 a.m. A lunch break will occur at 12 noon-1 p.m. The sessions will conclude at 5 p.m.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+				Registration Form: The deadline for registration is January 4, 2019. The first 50 registrants will be accommodated. 
+        The registration form is available online, click here to register. The course will be directed by Dr. Terry Moody, phone (240-276-7785).
+      </p>
+    </div>
+  </div>
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

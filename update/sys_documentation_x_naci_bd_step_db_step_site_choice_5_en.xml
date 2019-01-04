@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="site_choice_5" label="Site Choice 5" language="en" table="x_naci_bd_step_db_step">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>site_choice_5</element>
+            <help/>
+            <hint/>
+            <label>Site Choice 5</label>
+            <language>en</language>
+            <name>x_naci_bd_step_db_step</name>
+            <plural>Site Choice 5s</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>zhoujim@nih.gov</sys_created_by>
+            <sys_created_on>2019-01-03 16:09:57</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>09b6e911db72af40b86770c08c96190e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Site Choice 5</sys_name>
+            <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+            <sys_update_name>sys_documentation_x_naci_bd_step_db_step_site_choice_5_en</sys_update_name>
+            <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+            <sys_updated_on>2019-01-03 16:09:57</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

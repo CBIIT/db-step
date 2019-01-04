@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Site Name" max_length="40" name="x_naci_bd_step_site_name" type="collection">
+        <element label="name" max_length="50" name="name" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$rootScope, $location) {
+  var c = this;
+  var s = $location.search();
+  var redirect = false;
+	c.xpage = 'home';
+	if(s.xpage == 'home'){
+		c.xpage = "home";
+	}
+	else if (s.xpage == 'registration') {
+    c.xpage = "registration";
+  }
+	else if(s.xpage == 'report'){
+		c.xpage = "report";
+	}
+	
+	c.showPage = function(page){
+		s.xpage = page;
+		$location.search(s).replace();
+	}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bd_step_main</id>
+        <internal>false</internal>
+        <link/>
+        <name>bd step main</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-03 21:07:42</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>6adae69ddb36af40b86770c08c961993</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>bd step main</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sp_widget_6adae69ddb36af40b86770c08c961993</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-03 22:19:10</sys_updated_on>
+        <template><![CDATA[<div id="bd-step-main" class="container">
+  <div class="top-menu">
+    <div class="menu-item" ng-class="c.xpage == 'home'? 'active': ''">
+      <a href="#" ng-click="c.showPage('home');">Home</a>
+    </div>
+    <div class="menu-item" ng-class="c.xpage == 'registration'? 'active': ''">
+      <a href="#" ng-click="c.showPage('registration');">Registration</a>
+    </div>
+    <div class="menu-item" ng-class="c.xpage == 'report'? 'active': ''">
+      <a href="#" ng-click="c.showPage('report');">Report</a>
+    </div>
+    <div class="menu-item-last">
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="container" ng-if="c.xpage == 'home'">
+      <widget id="bd_step_home"></widget>
+    </div>
+    <div class="container" ng-if="c.xpage == 'registration'">
+      <widget id="bd_step_registration"></widget>
+    </div>
+    <div class="container" ng-if="c.xpage == 'report'">
+      <widget id="bd_step_report"></widget>
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

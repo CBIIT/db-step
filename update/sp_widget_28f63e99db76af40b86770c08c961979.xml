@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope) {
+  /* widget controller */
+  var c = this;
+	$scope.form = {
+		phd: '',
+		citizen: '',
+		greencard: ''
+	};
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bd_step_registration</id>
+        <internal>false</internal>
+        <link/>
+        <name>BD STEP Registration</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-03 22:00:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>BD STEP Registration</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-04 15:29:54</sys_updated_on>
+        <template><![CDATA[<div>
+  <br/><br/>
+	<div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
+  <br/>
+  <div class="row">
+    <div class="col-md-3">
+      <label style="margin-left: 30px;"><b>Are you a Ph.D.?</b></label>
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="phd" value="yes" ng-model="form.phd"/>&nbsp;Yes
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="phd" value="no" ng-model="form.phd"/>&nbsp;No
+    </div>
+  </div>
+  <div class="row" ng-show="form.phd == 'yes'">
+    <div class="col-md-3">
+      <label style="margin-left: 30px; margin-top: 5px;"><b>Are you a USA Citizen?</b></label>
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="citizen" value="yes" ng-model="form.citizen"/>&nbsp;Yes
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="citizen" value="no" ng-model="form.phd"/>&nbsp;No
+    </div>
+  </div>  
+  <div class="row" ng-show="form.citizen == 'no'">
+    <div class="col-md-3">
+      <label style="margin-left: 30px; margin-top: 5px;"><b>Are you a Permanent Resident?</b></label>
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="greencard" value="yes" ng-model="form.greencard"/>&nbsp;Yes
+    </div>
+    <div class="col-md-1">
+      <input type="radio" name="greencard" value="no" ng-model="form.phd"/>&nbsp;No
+    </div>
+  </div>  
+  <br/><br/>
+  <div class="row" ng-show="form.citizen == 'yes' || form.greencard == 'yes'">
+    Form here
+  </div>
+  
+  
+  <br/><br/><br/>
+  {{form | json}}
+</div>]]></template>
+    </sp_widget>
+</record_update>
