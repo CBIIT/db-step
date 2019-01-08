@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_js_include">
+    <sp_js_include action="INSERT_OR_UPDATE">
+        <display_name>BD STEP pagination</display_name>
+        <source>local</source>
+        <sys_class_name>sp_js_include</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-08 22:31:53</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>280ea00fdbbea30054d8ff621f9619c8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>BD STEP pagination</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_ui_script display_value="x_naci_bd_step.BD-STEP Pagination">a14d648bdbbea30054d8ff621f961927</sys_ui_script>
+        <sys_update_name>sp_js_include_280ea00fdbbea30054d8ff621f9619c8</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-08 22:31:53</sys_updated_on>
+        <url/>
+    </sp_js_include>
+</record_update>

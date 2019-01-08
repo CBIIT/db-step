@@ -2,9 +2,45 @@
 <record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <client_script><![CDATA[function($scope) {
+  /* widget controller */
+  var c = this;
+	setTimeout(function() {
+	  $('.collapse').on('shown.bs.collapse', function() {
+		  $(this).parent().find(".fa-plus-square").removeClass("fa-plus-square").addClass("fa-minus-square");
+		}).on('hidden.bs.collapse', function() {
+		  $(this).parent().find(".fa-minus-square").removeClass("fa-minus-square").addClass("fa-plus-square");
+	  });	
+	}, 0);
+	
+	$scope.sort = function(keyname){
+	   $scope.sortKey = keyname;
+	   $scope.reverse = !$scope.reverse;
+	};
+}]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.blue-panel{
+    background-color: #0280a9;
+    color: white;
+    height: 40px;
+}
+button{
+	background-color: #0280a9;
+}
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    line-height: 1;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    background-color: beige;
+    border-radius: 10px;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -18,14 +54,32 @@
         <option_schema/>
         <public>false</public>
         <roles/>
-        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <script><![CDATA[(function() {
+
+	data.tasks = [];
+	var recItem = new GlideRecord('x_naci_bd_step_db_step');
+			recItem.orderBy('number');
+	recItem.query();
+	while(recItem.next()){
+		var item = {};
+		item.id = recItem.sys_id.toString();
+		item.number = recItem.number.toString();
+		item.name = recItem.name.toString();
+		item.email = recItem.email.toString();
+		item.phone = recItem.phone.toString();
+		item.institution = recItem.affiliated_institution.toString();
+		item.field_study = recItem.field_study.toString();
+		data.tasks.push(item);
+	}
+
+})();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>zhoujim@nih.gov</sys_created_by>
         <sys_created_on>2019-01-03 22:00:58</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>0307fa19db76af40b86770c08c9619e2</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>BD STEP Report</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -33,9 +87,68 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_0307fa19db76af40b86770c08c9619e2</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-03 22:06:14</sys_updated_on>
+        <sys_updated_on>2019-01-08 22:57:59</sys_updated_on>
         <template><![CDATA[<div>
-Report Page
+  <br/><br/>
+  <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Report</font></label></div>
+  <br/>
+  <div class="row">
+     <div class="col-md-10"><b> Filter:</b> <input ng-model="search"></div>  
+  </div>
+  <div class="row">
+    <div ng-if="c.data.tasks.length > 0" style="margin-left:10px; margin-right: 10px;">
+        <div class="panel margin-bottom-small">
+            <div class="panel-heading blue-panel" role="tab" id="heading_savedItems">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-target="#collapsesavedItems" aria-expanded="true" aria-controls="collapsesavedItems">
+                  <span class="accordion_icon"><i class="fa fa-minus-square"></i></span> Submitted Applications <span class="badge" id="ritm_count">{{c.data.tasks.length}}</span>
+                </a>
+                </h4>
+            </div>
+    
+            <div id="collapsesavedItems" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_savedItems">
+                <table class="table table-bordered table-striped table-condensed">
+                    <tr>
+                        <th ng-click="sort('number')">ID<span class="glyphicon sort-icon" ng-show="sortKey=='number'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th ng-click="sort('name')">Name<span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th ng-click="sort('email')">Email<span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>                  
+                        <th ng-click="sort('phone')">Phone<span class="glyphicon sort-icon" ng-show="sortKey=='phone'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th ng-click="sort('institution')">Institution<span class="glyphicon sort-icon" ng-show="sortKey=='institution'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th ng-click="sort('field_study')">Field of Study<span class="glyphicon sort-icon" ng-show="sortKey=='field_study'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr dir-paginate="data in c.data.tasks|filter:search|orderBy:sortKey:reverse|itemsPerPage:pageSize" pagination-id="taskDataPagination">
+                        <td class="ritm_number">{{data.number}}</td>
+                        <td class="ritm_cat_item">{{data.name}}</td>
+                        <td class="ritm_cat_item">{{data.email}}</td>
+                        <td class="ritm_cat_item">{{data.phone}}</td>
+                        <td class="ritm_cat_item">{{data.institution}}</td>
+                        <td class="ritm_cat_item">{{data.field_study}}</td>
+                        <td><button ng-click="view(data.id);" class="btn btn-sm btn-primary" style="width: 70px; text-align: center;"> View</button>&#160;</td>
+                    </tr>
+                </table>
+                <div>
+                    <table width="100%" border="0">
+                        <tr>
+                            <td width="70%">
+                                <dir-pagination-controls pagination-id="taskDataPagination" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                            </td>
+                            <td width="25%" align="right"><label>Items per page&#160;&#160;</label></td>
+                            <td width="5%" align="right">
+                                <select class="form-control" ng-model="pageSize" ng-init="pageSize='10'" style="width:80px;">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                      </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+  </div>
 </div>]]></template>
     </sp_widget>
 </record_update>

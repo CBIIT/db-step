@@ -4,10 +4,13 @@
         <element label="Action" max_length="20" name="action" type="string"/>
         <element label="Address" max_length="200" name="address" type="string"/>
         <element label="Affiliated Institution" max_length="100" name="affiliated_institution" type="string"/>
+        <element label="citizen" max_length="10" name="citizen" type="string"/>
         <element label="Email" max_length="100" name="email" type="string"/>
-        <element label="Experience" max_length="400" name="experience" type="string"/>
+        <element label="Experience" max_length="4000" name="experience" type="string"/>
         <element label="Field Study" max_length="100" name="field_study" type="string"/>
         <element label="Name" max_length="100" name="name" type="string"/>
+        <element label="Permanent Resident" max_length="10" name="permanent_resident" type="string"/>
+        <element label="Phd" max_length="10" name="phd" type="string"/>
         <element label="Phone" max_length="20" name="phone" type="string"/>
         <element label="Site Choice 1" max_length="50" name="site_choice_1" type="string"/>
         <element label="Site Choice 2" max_length="50" name="site_choice_2" type="string"/>

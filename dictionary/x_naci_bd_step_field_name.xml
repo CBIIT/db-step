@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Field Name" max_length="40" name="x_naci_bd_step_field_name" type="collection">
+        <element label="field name" max_length="50" name="field_name" type="string"/>
+        <element label="order" max_length="10" name="order" type="integer"/>
+    </element>
+</database>

@@ -2,9 +2,15 @@
 <record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope) {
+        <client_script><![CDATA[function($scope, BDSTEPUtil) {
   /* widget controller */
   var c = this;
+	var sessionId = c.data.sessionId;
+	c.data.fileds = [];
+	c.data.sites = [];
+	
+	$scope.submitted = false;
+	$scope.showError = false;
 	$scope.form = {
 		phd: '',
 		citizen: '',
@@ -17,8 +23,12 @@
 		experience: '',
 		firstChoice: '',
 		secondChoice: '',
-		thirdChoice: ''
+		thirdChoice: '',
+		other: ''
 	};
+	
+	loadSiteName();
+	loadFieldName();
 	
 	$scope.displayMessage = function(){
 		$scope.form.phd = '';
@@ -27,9 +37,47 @@
 		$('#infoModal').modal('show');
 	}
 	$scope.submitForm = function(){
-		alert("Submit");
+		$scope.submitted = true;
+		if(validateInput()){
+			$scope.showError = true;
+		}else{
+			$scope.showError = false;
+			var params = JSON.stringify($scope.form);
+			BDSTEPUtil.submitApplication($scope.form, sessionId).then(function(res){
+				console.log(res);
+			}, function(error){
+				alert("ERROR!");
+				console.log(error);
+			});
+		}
+	}
+	//return true shows there is an error
+	function validateInput(){
+		if($scope.form.name.trim().length == 0 || $scope.form.phone.trim().length == 0 || $scope.form.mailingAddress.trim().length == 0 ||
+			 $scope.form.institution.trim().length == 0 || $scope.form.field.trim().length == 0 || $scope.form.experience.trim().length == 0 ||
+			 $scope.form.firstChoice.trim().length == 0){
+			 return true
+		}else{
+			return false;
+		}
 	}
 	
+	function loadFieldName(){
+		BDSTEPUtil.getFieldName(sessionId).then(function(res){
+			c.data.fields = res.data.result;
+		}, function(error){
+			alert('ERROR!');
+			console.log(error);
+		});
+	}
+	function loadSiteName(){
+		BDSTEPUtil.getSiteName(sessionId).then(function(res){
+			c.data.sites = res.data.result;
+		}, function(error){
+			alert("ERROR!");
+			console.log(error);
+		});
+	}
 	var limitWord = 300;
 	$("#experience").keyup(function () {
 			$this = $(this);
@@ -124,6 +172,10 @@
   padding: 10px 25px;
   background:#0280a9;
   color: #fff;
+}
+
+.bg-yellow {
+  background-color: yellow;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -138,14 +190,17 @@
         <option_schema/>
         <public>false</public>
         <roles/>
-        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <script><![CDATA[(function() {
+	data.sessionId = gs.getSession().getSessionToken();
+
+})();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>zhoujim@nih.gov</sys_created_by>
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>254</sys_mod_count>
+        <sys_mod_count>372</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -153,10 +208,10 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-04 23:47:14</sys_updated_on>
-        <template><![CDATA[<div>
+        <sys_updated_on>2019-01-08 15:56:35</sys_updated_on>
+        <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
-	<div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
+  <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
   <br/>
   <div class="row">
     <div class="col-md-3">
@@ -191,182 +246,191 @@
       <input type="radio" name="greencard" value="no" ng-model="form.greencard" ng-click="displayMessage();"/>&nbsp;No
     </div>
   </div>  
+  <div class="row"  ng-show="showError == true">
+    <div class="col-md-10" style="margin-left: 20px;"><font color='red'>Please fill in required fields.</font></div>>
+  </div>
   <div class="row">
     <div class="col-md -12 panel panel-default" style="margin-top: 10px; margin-left: 40px; margin-right:40px;">
-        <div class="panel-heading"><b>Your information</b></div>
-      	<div class="panel-body panel-bgColor">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" >
-                  <label for="name" style="margin-left: 10px;"> <b>Name (Last Name, First, Middle Initial)</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right" >
-                  <input class="form-control" style="margin-left: 10px;" type="text" name="name" ng-model="form.name" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
-                </div>
-              </div>   
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                  <label for="email" style="margin-left: 10px;"> <b>Email Address</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right">
-                  <input class="form-control" style="margin-left: 10px;" type="text" name="email" ng-model="form.email"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
-                </div>
+      <div class="panel-heading"><b>Your information</b></div>
+      <div class="panel-body panel-bgColor">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" >
+                <label for="name" style="margin-left: 10px;"> <b><font color='red'>*</font>Name (Last Name, First, Middle Initial)</b></label>
               </div>
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                  <label for="phone" style="margin-left: 10px;"><b> Work Telephone Number</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right">
-                  <input class="form-control" style="margin-left: 10px;" type="text" name="phone" ng-model="form.phone"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
-                </div>
+              <div class="col-xm-10 form-margin-right" >
+                <input 
+                       class="form-control" 
+                       ng-class="{'bg-yellow': submitted && inputForm.name.$error.required}"
+                       style="margin-left: 10px;" 
+                       required
+                       type="text" 
+                       name="name" 
+                       ng-model="form.name" 
+                       ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
+
               </div>
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                  <label for="mailingAddress" style="margin-left: 10px;"><b> Mailing Address</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right">
-                  <textarea class="form-control" style="margin-left: 10px;" rows="4" name="mailingAddress" ng-model="form.mailingAddress" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" ></textarea>
-                </div>
+            </div>   
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
+                <label for="email" style="margin-left: 10px;"> <b><font color='red'>*</font>Email Address</b></label>
               </div>
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                  <label for="institution" style="margin-left: 10px;"> <b>Affiliated Institution</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right">
-                  <input class="form-control" style="margin-left: 10px;" type="text" name="institution" ng-model="form.institution"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                  <label for="field" style="margin-left: 10px;"> <b>Field of Study for Ph.D.</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-right">
-                  <input class="form-control" style="margin-left: 10px;" type="text" name="field" ng-model="form.field"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
-                </div>
+              <div class="col-xm-10 form-margin-right">
+                <input class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.email.$error.required}" style="margin-left: 10px;" type="text" name="email" ng-model="form.email"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
               </div>
             </div>
-            <div class="col-md-6">
-               <div class="row">
-                <div class="col-xm-10 form-margin-left form-margin-right">
-                  <label for="experience"> <b>Experience in bioinformatics, modeling, management of large datasets(300 words)</b></label>
-                </div>
-                <div class="col-xm-10 form-margin-left form-margin-right">
-                  <textarea class="form-control" rows="21" id="experience" name="experience" ng-model="form.experience"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" ></textarea>
-                  Word count: <label id="count-label">0</label>
-                </div>
-              </div>           
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
+                <label for="phone" style="margin-left: 10px;"><b> <font color='red'>*</font>Work Telephone Number</b></label>
+              </div>
+              <div class="col-xm-10 form-margin-right">
+                <input class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.phone.$error.required}" style="margin-left: 10px;" type="text" name="phone" ng-model="form.phone"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
+                <label for="mailingAddress" style="margin-left: 10px;"><b> <font color='red'>*</font>Mailing Address</b></label>
+              </div>
+              <div class="col-xm-10 form-margin-right">
+                <textarea class="form-control" required ng-class="{'bg-yellow': submitted && inputForm.mailingAddress.$error.required}" style="margin-left: 10px;" rows="4" name="mailingAddress" ng-model="form.mailingAddress" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
+                <label for="institution" style="margin-left: 10px;"> <b><font color='red'>*</font>Affiliated Institution</b></label>
+              </div>
+              <div class="col-xm-10 form-margin-right">
+                <input class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.institution.$error.required}" style="margin-left: 10px;" type="text" name="institution" ng-model="form.institution"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
+                <label for="field" style="margin-left: 10px;"> <b><font color='red'>*</font>Field of Study for Ph.D.</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7">
+                <select class="form-control"   required ng-class="{'bg-yellow': submitted && inputForm.field.$error.required}" style="margin-left: 1px;" name="field" ng-model="form.field"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <option value="">Please select a field of study for Ph.D.</option>
+                  <option ng-repeat="x in c.data.fields" value="{{x.value}}">{{x.label}}</option>
+                </select>
+              </div>
+              <div class="col-md-5" ng-show="form.field == 'Other'">
+                <input type="text" class="form-control" ng-model="form.other" placeholder="Enter a field of study"/>
+              </div>
             </div>
           </div>
-          <div class="row" style="margin-top:10px">
-            <div class="col-md-6">
-              <div class="row form-margin-left form-margin-right">
-               <label><b>Upload Supperting Files &nbsp;</b><img src="contextual_help.png" width="20px" height="20px" Alt="Help" Title="Brief statement of interest (maximum one page) to include proposed research areas/topics letter of support from acadamic mentor for postdoctoral research (existing or planned research relationship)"/></label>      
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-xm-10 form-margin-left form-margin-right">
+                <label for="experience"> <b><font color='red'>*</font>Experience in bioinformatics, modeling, management of large datasets(300 words)</b></label>
               </div>
-              <div class="form-section">
-                 <div class="file-section">
-                   <div class="file-return" id="certificate_label">
-                     <span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select file 1 to be uploaded</span>
-                   </div>
-                   <div class="input-file-container">
-                      <input class="input-file" id="file" type="file" accept=".doc, .docx, .pdf">
-                      <label for="file" class="input-file-trigger">Browse...</label>
-                   </div>
-                 </div> 
+              <div class="col-xm-10 form-margin-left form-margin-right">
+                <textarea class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.experience.$error.required}" rows="21" id="experience" name="experience" ng-model="form.experience"  ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))" ></textarea>
+                Word count: <label id="count-label">0</label>
               </div>
-              <div class="form-section" style="margin-top:10px">
-                 <div class="file-section">
-                   <div class="file-return" id="certificate_label1">
-                     <span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select file 2 to be uploaded</span>
-                   </div>
-                   <div class="input-file-container">
-                      <input class="input-file1" id="file1" type="file" accept=".doc, .docx, .pdf">
-                      <label for="file1" class="input-file-trigger1">Browse...</label>
-                   </div>
-                 </div> 
+            </div>           
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="col-md-6">
+            <div class="row form-margin-left form-margin-right">
+              <label><b>Upload Supperting Files &nbsp;</b><img src="contextual_help.png" width="20px" height="20px" Alt="Help" Title="Brief statement of interest (maximum one page) to include proposed research areas/topics letter of support from acadamic mentor for postdoctoral research (existing or planned research relationship)"/></label>      
+            </div>
+            <div class="form-section" style="margin-top:10px;">
+              <div class="file-section">
+                <div class="file-return" id="certificate_label">
+                  <span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select file 1 to be uploaded</span>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file" id="file" type="file" accept=".doc, .docx, .pdf" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <label for="file" class="input-file-trigger">Browse...</label>
+                </div>
+              </div> 
+            </div>
+            <div class="form-section" style="margin-top:20px">
+              <div class="file-section">
+                <div class="file-return" id="certificate_label1">
+                  <span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select file 2 to be uploaded</span>
+                </div>
+                <div class="input-file-container">
+                  <input class="input-file1" id="file1" type="file" accept=".doc, .docx, .pdf" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <label for="file1" class="input-file-trigger1">Browse...</label>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-xm-12 form-margin-left" >
+                <lable><b>Please choose at least one of the BD-STEP VA medical center locations, with your first choice at the top. If you are only interested in matching with one VA site, list only one option.</b></lable>  
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-xm-12 form-margin-left" >
-                	<lable><b>BD-STEP Sites</b></lable>  
-                </div>
+            <div class="col-xm-12">
+              <div class="col-md-6">
+                <label><b><font color='red'>*</font>1st Choice</b></label>
               </div>
-							<div class="col-xm-12">
-                <div class="col-md-6">
-                  <label><b>1st Choice</b></label>
-                </div>
-                <div class="col-md-6">
-                   <select class="form-control" ng-model="form.firstChoice">
-                     <option value="Boston, MA">Boston, MA</option>
-                     <option value="Buffalo, NY">Buffalo, NY</option>
-                     <option value="Houston, TX">Houston, TX</option>
-                     <option value="Durham, NC">Durham, NC</option>
-                     <option value="Palo Alto, CA">Palo Alto, CA</option>
-                     <option value="Seattle, WA">Seattle, WA</option>
-                  </select>
-                </div>
+              <div class="col-md-6">
+                <select class="form-control" required name="firstChoice" ng-class="{'bg-yellow': submitted && inputForm.firstChoice.$error.required}" ng-model="form.firstChoice" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <option value="">Please select a site</option>
+                  <option ng-repeat="x in c.data.sites" value="{{x.value}}">{{x.label}}</option>
+                </select>
               </div>
-							<div class="col-xm-12">
-                <div class="col-md-6">
-                  <label><b>2nd Choice</b></label>
-                </div>
-                <div class="col-md-6">
-                   <select class="form-control" ng-model="form.secondChoice">
-                     <option value="1">Boston, MA</option>
-                     <option value="2">Buffalo, NY</option>
-                     <option value="3">Houston, TX</option>
-                     <option value="4">Durham, NC</option>
-                     <option value="5">Palo Alto, CA</option>
-                     <option value="6">Seattle, WA</option>
-                  </select>
-                </div>
-              </div>
-							<div class="col-xm-12">
-                <div class="col-md-6">
-                  <label><b>3rd Choice</b></label>
-                </div>
-                <div class="col-md-6">
-                   <select class="form-control" ng-model="form.thirdChoice">
-                     <option value="1">Boston, MA</option>
-                     <option value="2">Buffalo, NY</option>
-                     <option value="3">Houston, TX</option>
-                     <option value="4">Durham, NC</option>
-                     <option value="5">Palo Alto, CA</option>
-                     <option value="6">Seattle, WA</option>
-                  </select>
-                </div>
-              </div>              
-              
             </div>
+            <div class="col-xm-12">
+              <div class="col-md-6">
+                <label><b>2nd Choice</b></label>
+              </div>
+              <div class="col-md-6">
+                <select class="form-control" ng-model="form.secondChoice" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <option value="">Please select a site</option>
+                  <option ng-repeat="x in c.data.sites" value="{{x.value}}">{{x.label}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xm-12">
+              <div class="col-md-6">
+                <label><b>3rd Choice</b></label>
+              </div>
+              <div class="col-md-6">
+                <select class="form-control" ng-model="form.thirdChoice" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+                  <option value="">Please select a site</option>
+                  <option ng-repeat="x in c.data.sites" value="{{x.value}}">{{x.label}}</option>
+                </select>
+              </div>
+            </div>              
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:10px; margin-bottom: 20px;">
+      <div class="col-md-12" align="center">
+        <button type="submit" class="btn btn-primary" style="width:120px" ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))">
+          Submit
+        </button>
+      </div>  
+    </div> 
+  </div>
+  <div id="infoModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 id="lblTitleConfirmOk" class="modal-title">Information</h4>
+        </div>
+        <div class="modal-body">
+          <p align="center"><font color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font></p>
+        </div>
+        <div class="modal-footer">
+          <button id="btnOkConfirm" type="button" class="btn btn-primary" style="width: 70px; text-align: center;" data-dismiss="modal" aria-label="Close">OK</button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row" style="margin-top:10px; margin-bottom: 20px;">
-  	<div class="col-md-12" align="center">
-      <button class="btn btn-primary" style="width:120px" ng-click="submitForm();">
-        Submit
-      </button>
-    </div>  
-  </div> 
-</div>
-<div id="infoModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 id="lblTitleConfirmOk" class="modal-title">Information</h4>
-            </div>
-            <div class="modal-body">
-                <p align="center"><font color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font></p>
-            </div>
-            <div class="modal-footer">
-                <button id="btnOkConfirm" type="button" class="btn btn-primary" style="width: 70px; text-align: center;" data-dismiss="modal" aria-label="Close">OK</button>
-            </div>
-        </div>
-    </div>
-</div>]]></template>
+</form>]]></template>
     </sp_widget>
 </record_update>

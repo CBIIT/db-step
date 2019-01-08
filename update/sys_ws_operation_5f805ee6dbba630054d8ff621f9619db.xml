@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>POST</http_method>
+        <name>saveApplicant</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	var data = body.data;
+	
+    
+	return data;
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_naci_bd_step/fellowship/saveApplicant</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/saveApplicant</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-07 16:26:04</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5f805ee6dbba630054d8ff621f9619db</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>saveApplicant</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sys_ws_operation_5f805ee6dbba630054d8ff621f9619db</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-07 16:26:04</sys_updated_on>
+        <web_service_definition display_value="Fellowship">b750d6e6dbba630054d8ff621f961926</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
