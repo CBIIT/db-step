@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, BDSTEPUtil) {
+  /* widget controller */
+  var c = this;
+	var sessionId = c.data.sessionId;
+	$scope.form = {
+		name: '',
+		email: '',
+		phone: '',
+		address: '',
+		institution: '',
+		field: '',
+		experience: '',
+		firstChoice:'',
+		secondChoice: '',
+		thirdChoice:'',
+		attach_id1: '',
+		attach_fileName1: '',
+		attach_id2: '',
+		attach_fileName2: ''
+	}
+	
+	$scope.noAccess = "yes";
+	var userLocation = window.location.href;
+	var temp = userLocation.split('&');
+	var id = 0;
+  if(temp[1] === undefined){
+		$scope.noAccess = 'no';
+	}else{
+		id = temp[1].split("=")[1];
+		if(id == null || id.trim().length == 0 || id === undefined){
+			$scope.noAccess = 'no';
+		}else{
+			$scope.noAccess = 'yes';
+			loadData(id);
+		}
+	}
+	function loadData(id){
+		BDSTEPUtil.getApplicationData(sessionId,id).then(function(res){
+				populateData(res.data.result);
+			}, function(error){
+				alert("ERROR!");
+				console.log(error);
+			});
+	}
+	function populateData(data){
+		$scope.form.name = data.name.toString();
+		$scope.form.email = data.email.toString();
+		$scope.form.phone = data.phone.toString();
+		$scope.form.address = data.address.toString();
+		$scope.form.institution = data.institution.toString();
+		$scope.form.field = data.field.toString();
+		$scope.form.experience = data.experience.toString();
+		$scope.form.firstChoice = data.first_choice.toString();
+		$scope.form.secondChoice = data.second_choice.toString();
+		$scope.form.thirdChoice = data.third_choice.toString();
+		$scope.form.attach_id1 = data.attch_id1.toString();
+		$scope.form.attach_fileName1 = data.attch_name1.toString();
+		$scope.form.attach_id2 = data.attch_id2.toString();
+		$scope.form.attach_fileName2 = data.attch_name2.toString();
+	}
+	
+	$scope.back = function(){
+		location.replace("fellowship?xpage=report");
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>bd_detail</id>
+        <internal>false</internal>
+        <link/>
+        <name>BD Detail</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	data.sessionId = gs.getSession().getSessionToken();
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-09 14:55:02</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5a1f8c57db36230054d8ff621f9619b1</sys_id>
+        <sys_mod_count>85</sys_mod_count>
+        <sys_name>BD Detail</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sp_widget_5a1f8c57db36230054d8ff621f9619b1</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-09 22:59:37</sys_updated_on>
+        <template><![CDATA[<div id="detailPage">
+  <div>
+    <a href="fellowship?xpage=report">Report</a> > Application detail
+  </div>
+  <br/><br/>
+  <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP)</font></label></div>
+  <br/>
+   <div class="row">
+    <div class="col-md -12 panel panel-default" style="margin-top: 10px; margin-left: 40px; margin-right:40px;">
+      <div class="panel-heading"><b>Application Details</b></div>
+      <div class="panel-body panel-bgColor">
+       	<div class="row" ng-show="noAccess == 'no'">
+          <div class="col-md-10">
+            Unable to load Big Data Scientist Training Enhancement Program data.
+          </div>
+        </div>
+        <div class="row" ng-show="noAccess == 'yes'">
+          <div class="col-md-12">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Name</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.name}}
+            </div>  
+          </div>
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Email Address</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.email}}
+            </div>  
+          </div> 
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Work Telephone Number</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.phone}}
+            </div>  
+          </div>
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Mailing Address</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.address}}
+            </div>  
+          </div>           
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Affiliated Institution</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.institution}}
+            </div>  
+          </div>           
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Field of Study for Ph.D.</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.field}}
+            </div>  
+          </div>           
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Experience in bioinformatics, modeling, <br/>management of large datasets</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.experience}}
+            </div>  
+          </div>           
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>1st Choice</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.firstChoice}}
+            </div>  
+          </div>           
+          <div class="col-md-12" style="margin-top:10px" ng-show="form.secondChoice.trim().length > 0">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>2nd Choice</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.secondChoice}}
+            </div>  
+          </div>           
+           <div class="col-md-12" style="margin-top:10px" ng-show="form.thirdChoice.trim().length > 0">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>3rd Choice</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.thirdChoice}}
+            </div>  
+          </div> 
+           <div class="col-md-12" style="margin-top:10px" ng-show="form.attach_id1.trim().length > 0">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Support File 1</b>
+            </div>
+             <div class="col-md-5">
+                {{form.attach_fileName1}} 
+            </div>  
+             <div class="col-md-1" style="margin-right:10px;">
+                <a href='sys_attachment.do?view=true&sys_id={{form.attach_id1}}' target='_BLANK'>View</a>
+            </div>  
+          </div> 
+           <div class="col-md-12" style="margin-top:10px" ng-show="form.attach_id2.trim().length > 0">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Support File 2</b>
+            </div>
+             <div class="col-md-5">
+                {{form.attach_fileName2}} 
+            </div>  
+            <div class="col-md-1" style="margin-right:10px;">
+               <a href='sys_attachment.do?view=true&sys_id={{form.attach_id2}}' target='_BLANK'>View</a>
+            </div>  
+
+          </div> 
+          
+        </div>
+      </div>
+     </div>
+  </div>
+
+  <div class="row" style="margin-top:30px; margin-bottom:20px;">
+    <div class="col-md-12" align="center">
+      <button class="btn btn-primary" ng-click="back()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

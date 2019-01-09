@@ -2,7 +2,7 @@
 <record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope) {
+        <client_script><![CDATA[function($scope, spUtil) {
   /* widget controller */
   var c = this;
 	setTimeout(function() {
@@ -17,6 +17,13 @@
 	   $scope.sortKey = keyname;
 	   $scope.reverse = !$scope.reverse;
 	};
+	
+	$scope.view = function(id){
+		location.replace("$sp.do?id=bd_detail_page&obj_id=" + id);
+	}
+	spUtil.recordWatch($scope, "x_naci_bd_step_db_step", "", function(name, data) {  
+			spUtil.update($scope);
+	});
 }]]></client_script>
         <controller_as>c</controller_as>
         <css>.blue-panel{
@@ -58,7 +65,7 @@ button{
 
 	data.tasks = [];
 	var recItem = new GlideRecord('x_naci_bd_step_db_step');
-			recItem.orderBy('number');
+			recItem.orderByDesc('number');
 	recItem.query();
 	while(recItem.next()){
 		var item = {};
@@ -79,7 +86,7 @@ button{
         <sys_created_on>2019-01-03 22:00:58</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>0307fa19db76af40b86770c08c9619e2</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>39</sys_mod_count>
         <sys_name>BD STEP Report</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -87,12 +94,15 @@ button{
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_0307fa19db76af40b86770c08c9619e2</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-08 22:57:59</sys_updated_on>
+        <sys_updated_on>2019-01-09 23:09:26</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Report</font></label></div>
   <br/>
-  <div class="row">
+  <div class="row" ng-if="c.data.tasks.length == 0">
+     <div class="col-md-10" align="center"><font size="4">No Application has been submitted</font></div>  
+  </div>
+  <div class="row" style="margin-bottom:5px;" ng-show="c.data.tasks.length > 0">
      <div class="col-md-10"><b> Filter:</b> <input ng-model="search"></div>  
   </div>
   <div class="row">

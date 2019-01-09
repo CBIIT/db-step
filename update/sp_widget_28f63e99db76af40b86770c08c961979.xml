@@ -16,6 +16,7 @@
 		citizen: '',
 		greencard: '',
 		name: '',
+		email:'',
 		phone: '',
 		mailingAddress: '',
 		institution: '', 
@@ -34,6 +35,7 @@
 		$scope.form.phd = '';
 		$scope.form.citizen = '';
 		$scope.form.greencard = '';
+		$('#info').html("<font color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font>");
 		$('#infoModal').modal('show');
 	}
 	$scope.submitForm = function(){
@@ -44,19 +46,75 @@
 			$scope.showError = false;
 			var params = JSON.stringify($scope.form);
 			BDSTEPUtil.submitApplication($scope.form, sessionId).then(function(res){
-				console.log(res);
+				var id = res.data.result.id.toString();
+				uploadFile(id);
 			}, function(error){
 				alert("ERROR!");
 				console.log(error);
 			});
+		  
 		}
+	}
+	
+	function uploadFile(id){
+		var file1 = $('#file')[0].files[0];
+		var file2 = $('#file1')[0].files[0];
+		if(!(file1 === undefined)){
+			BDSTEPUtil.readFile(file1, handleContents1);
+		}
+		if(!(file2 === undefined)){
+			BDSTEPUtil.readFile(file2, handleContents2);
+		}
+		showMessage();
+		//upload file1
+	  function handleContents1(contents) {
+			var fileName = file1.name;
+			console.log(contents);
+			BDSTEPUtil.uploadAttachment(id, contents, fileName, sessionId).then(function(res){
+				console.log(res);
+			}, function (error){
+				alert("ERROR!");
+				console.log(error);
+			});
+		}
+		//upload file2
+		function handleContents2(contents) {
+			var fileName = file2.name;
+			BDSTEPUtil.uploadAttachment(id, contents, fileName, sessionId).then(function(res){
+				console.log(res);
+			}, function (error){
+				alert("ERROR!");
+				console.log(error);
+			});
+		}
+	}
+	
+	function showMessage(){
+		$('#info').html("<font color='green'>Your application has been submitted successfully.</font>");
+		$('#infoModal').modal('show');
+		$scope.form.phd = '';
+		$scope.form.citizen = '';
+		$scope.form.greencard = '';
+		$scope.form.name = '';
+		$scope.form.email = '';
+		$scope.form.phone = '';
+		$scope.form.mailingAddress = '';
+		$scope.form.institution = ''; 
+		$scope.form.field = ''; 
+		$scope.form.experience = '';
+		$scope.form.firstChoice = '';
+		$scope.form.secondChoice = '';
+		$scope.form.thirdChoice = '';
+		$scope.form.other = '';
+		$scope.submitted = false;
+	  $scope.showError = false;
 	}
 	//return true shows there is an error
 	function validateInput(){
 		if($scope.form.name.trim().length == 0 || $scope.form.phone.trim().length == 0 || $scope.form.mailingAddress.trim().length == 0 ||
 			 $scope.form.institution.trim().length == 0 || $scope.form.field.trim().length == 0 || $scope.form.experience.trim().length == 0 ||
 			 $scope.form.firstChoice.trim().length == 0){
-			 return true
+			 return true;
 		}else{
 			return false;
 		}
@@ -200,7 +258,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>372</sys_mod_count>
+        <sys_mod_count>432</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -208,7 +266,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-08 15:56:35</sys_updated_on>
+        <sys_updated_on>2019-01-09 22:11:27</sys_updated_on>
         <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
@@ -422,8 +480,8 @@
           </button>
           <h4 id="lblTitleConfirmOk" class="modal-title">Information</h4>
         </div>
-        <div class="modal-body">
-          <p align="center"><font color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font></p>
+        <div class="modal-body"  style="text-align:center;">
+          <span id="info"></span>
         </div>
         <div class="modal-footer">
           <button id="btnOkConfirm" type="button" class="btn btn-primary" style="width: 70px; text-align: center;" data-dismiss="modal" aria-label="Close">OK</button>

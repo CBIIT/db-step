@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_row">
+    <sp_row action="INSERT_OR_UPDATE">
+        <class_name/>
+        <order>2</order>
+        <sp_column/>
+        <sp_container display_value="BD detail Page - Container 1">2461d81bdb36230054d8ff621f96191c</sp_container>
+        <sys_class_name>sp_row</sys_class_name>
+        <sys_created_by>zhoujim@nih.gov</sys_created_by>
+        <sys_created_on>2019-01-09 15:07:00</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>add1dc1bdb36230054d8ff621f96192f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>2</sys_name>
+        <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
+        <sys_update_name>sp_row_add1dc1bdb36230054d8ff621f96192f</sys_update_name>
+        <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
+        <sys_updated_on>2019-01-09 15:21:13</sys_updated_on>
+    </sp_row>
+</record_update>
