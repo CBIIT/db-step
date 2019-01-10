@@ -137,7 +137,7 @@ div.page, section.page {&#13;
         <sys_created_on>2019-01-09 15:05:01</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>6061d81bdb36230054d8ff621f96191a</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>bd_detail_page</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -145,7 +145,7 @@ div.page, section.page {&#13;
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_page_6061d81bdb36230054d8ff621f96191a</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-09 15:23:53</sys_updated_on>
+        <sys_updated_on>2019-01-10 20:34:15</sys_updated_on>
         <title>BD detail Page</title>
     </sp_page>
 </record_update>

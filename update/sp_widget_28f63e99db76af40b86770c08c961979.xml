@@ -5,7 +5,6 @@
         <client_script><![CDATA[function($scope, BDSTEPUtil) {
   /* widget controller */
   var c = this;
-	var sessionId = c.data.sessionId;
 	c.data.fileds = [];
 	c.data.sites = [];
 	
@@ -45,7 +44,7 @@
 		}else{
 			$scope.showError = false;
 			var params = JSON.stringify($scope.form);
-			BDSTEPUtil.submitApplication($scope.form, sessionId).then(function(res){
+			BDSTEPUtil.submitApplication($scope.form).then(function(res){
 				var id = res.data.result.id.toString();
 				uploadFile(id);
 			}, function(error){
@@ -70,7 +69,7 @@
 	  function handleContents1(contents) {
 			var fileName = file1.name;
 			console.log(contents);
-			BDSTEPUtil.uploadAttachment(id, contents, fileName, sessionId).then(function(res){
+			BDSTEPUtil.uploadAttachment(id, contents, fileName).then(function(res){
 				console.log(res);
 			}, function (error){
 				alert("ERROR!");
@@ -80,7 +79,7 @@
 		//upload file2
 		function handleContents2(contents) {
 			var fileName = file2.name;
-			BDSTEPUtil.uploadAttachment(id, contents, fileName, sessionId).then(function(res){
+			BDSTEPUtil.uploadAttachment(id, contents, fileName).then(function(res){
 				console.log(res);
 			}, function (error){
 				alert("ERROR!");
@@ -121,7 +120,7 @@
 	}
 	
 	function loadFieldName(){
-		BDSTEPUtil.getFieldName(sessionId).then(function(res){
+		BDSTEPUtil.getFieldName().then(function(res){
 			c.data.fields = res.data.result;
 		}, function(error){
 			alert('ERROR!');
@@ -129,7 +128,7 @@
 		});
 	}
 	function loadSiteName(){
-		BDSTEPUtil.getSiteName(sessionId).then(function(res){
+		BDSTEPUtil.getSiteName().then(function(res){
 			c.data.sites = res.data.result;
 		}, function(error){
 			alert("ERROR!");
@@ -246,10 +245,9 @@
         <link/>
         <name>BD STEP Registration</name>
         <option_schema/>
-        <public>false</public>
+        <public>true</public>
         <roles/>
         <script><![CDATA[(function() {
-	data.sessionId = gs.getSession().getSessionToken();
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -258,7 +256,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>432</sys_mod_count>
+        <sys_mod_count>438</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -266,7 +264,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-09 22:11:27</sys_updated_on>
+        <sys_updated_on>2019-01-10 16:53:26</sys_updated_on>
         <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>

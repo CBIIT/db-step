@@ -4,9 +4,42 @@
         <name>fellowship_requestor_email</name>
         <new_lines_to_html>false</new_lines_to_html>
         <script><![CDATA[(function runMailScript(current, template, email, email_action, event) {
-	 var url = gs.getProperty("x_naci_bd_step.bd-step.url") + "?bd-step-id=" + current.sys_id.toString();  
-	 template.print("Dear " + current.name +"<br/><br/>");
-	 template.print("Your application has been submitted successfully. If you want to view the application, please go to <a href='" + url + "'>Big Data Scientist Training Enhancement Program</a> for details");
+	template.print("Dear " + current.name +"<br/><br/>");
+	template.print("Your application has been submitted successfully.");
+	template.print("<table border='0' width='60%'>");
+	template.print("<tr><td width='25%'><b>Name</b></td><td width='75%'>" + current.name.toString() + "</td></tr>");
+	template.print("<tr><td><b>Email</b></td><td>" + current.email.toString() + "</td></tr>");
+	template.print("<tr><td><b>Phone</b></td><td>" + current.phone.toString() + "</td></tr>");
+	template.print("<tr><td><b>Address</b></td><td>" + current.address.toString() + "</td></tr>");
+	template.print("<tr><td><b>Affiliated Institution</b></td><td>" + current.affiliated_institution.toString() + "</td></tr>");
+	template.print("<tr><td><b>Field of Study for Ph.D.</b></td><td>" + current.field_study.toString() + "</td></tr>");
+	template.print("<tr><td><b>Experience</b></td><td>" + current.experience.toString() + "</td></tr>");
+	template.print("<tr><td><b>First Choice</b></td><td>" + current.site_choice_1.toString() + "</td></tr>");
+	if(current.site_choice_2 != null && current.site_choice_2.toString().trim().length > 0){
+		template.print("<tr><td><b>Second Choice</b></td><td>" + current.site_choice_2.toString() + "</td></tr>");
+	}
+	if(current.site_choice_3 != null && current.site_choice_3.toString().trim().length > 0){
+		template.print("<tr><td><b>Third Choice</b></td><td>" + current.site_choice_3.toString() + "</td></tr>");
+	}
+	var attach = [];
+	var attachment =  new GlideRecord('sys_attachment');
+		attachment.addQuery('table_sys_id', current.sys_id);
+		attachment.query();
+		while(attachment.next()){
+		   var item = {};
+		   item.attch_id = attachment.sys_id.toString();	
+		   item.file_name =	attachment.file_name.toString();	
+           attach.push(item);
+        }
+
+	if(attach.length == 1){
+		template.print("<tr><td><b>Support File 1</b></td><td>" + attach[0].file_name.toString() + "</td></tr>");
+	}else if(attach.length == 2){
+		template.print("<tr><td><b>Support File 1</b></td><td>" + attach[0].file_name.toString() + "</td></tr>");
+		template.print("<tr><td><b>Support File 1</b></td><td>" + attach[1].file_name.toString() + "</td></tr>");
+	}
+		
+	template.print("</table><br/><br/><br/>");
 
 })(current, template, email, email_action, event);]]></script>
         <sys_class_name>sys_script_email</sys_class_name>
@@ -14,7 +47,7 @@
         <sys_created_on>2019-01-08 20:43:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>39251483db7ea30054d8ff621f9619ba</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>fellowship_requestor_email</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -22,6 +55,6 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sys_script_email_39251483db7ea30054d8ff621f9619ba</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-08 21:26:17</sys_updated_on>
+        <sys_updated_on>2019-01-10 20:27:06</sys_updated_on>
     </sys_script_email>
 </record_update>
