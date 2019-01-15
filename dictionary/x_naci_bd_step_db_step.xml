@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="task" label="DB STEP" max_length="40" name="x_naci_bd_step_db_step" sizeclass="9" type="collection">
+    <element extends="task" label="DB STEP" max_length="40" name="x_naci_bd_step_db_step" sizeclass="38" type="collection">
         <element label="Action" max_length="20" name="action" type="string"/>
         <element label="Address" max_length="200" name="address" type="string"/>
         <element label="Affiliated Institution" max_length="100" name="affiliated_institution" type="string"/>

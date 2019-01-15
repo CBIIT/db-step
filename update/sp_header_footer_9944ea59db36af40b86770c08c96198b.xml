@@ -7,8 +7,15 @@
   var c = this;
 }]]></client_script>
         <controller_as>c</controller_as>
-        <css>.login {&#13;
-  color: white;&#13;
+        <css>.login {
+  color: white;
+}
+
+.custom-dropdown {
+  background-color: transparent;
+  color: white;
+  height: 100%;
+  border: none;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -25,6 +32,7 @@
         <roles/>
         <script><![CDATA[(function () {
 	data.userName = gs.getUserName();
+	data.isLoggedIn = gs.getSession().isLoggedIn();
 })();
 ]]></script>
         <servicenow>false</servicenow>
@@ -33,7 +41,7 @@
         <sys_created_on>2019-01-03 20:39:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>9944ea59db36af40b86770c08c96198b</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>50</sys_mod_count>
         <sys_name>DB STEP Header</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -41,18 +49,28 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_header_footer_9944ea59db36af40b86770c08c96198b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-10 21:54:00</sys_updated_on>
+        <sys_updated_on>2019-01-15 17:40:08</sys_updated_on>
         <template><![CDATA[<div id="bd-step-header">
-	<div id="bd-step-logo">
+  <div id="bd-step-logo">
     <div class="container logo">
-       <img src="nci-logo-full.svg" width="550px" height="70px" alt="NIH, National Cancer Institute" border="0" id="NIHbanner" usemap="#NIHmap">
+      <img src="nci-logo-full.svg" width="550px" height="70px" alt="NIH, National Cancer Institute" border="0" id="NIHbanner" usemap="#NIHmap">
     </div>
   </div>
   <div id="bd-step-nav">
     <div class="container banner clearfix"> 
       Big Data Scientist Training Enhancement Program
-      <a ng-if="c.data.userName == 'guest'" class="pull-right login" href="?id=bd_step_login">Log In</a>
-      <a ng-if="c.data.userName != 'guest'" class="pull-right login" href="/logout.do?sysparm_goto_url=/fellowship">Log Out</a>
+      <div class="dropdown pull-right" ng-show="!c.data.isLoggedIn">
+        <button class="dropdown-toggle custom-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Login
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a class="" href="?id=bd_step_login">Log In (Internal)</a></li>
+          <li><a class="" href="?id=bd_step_login_external">Log In (External)</a></li>
+        </ul>
+      </div>
+      <!--a ng-if="c.data.userName == 'guest'" class="pull-right login" href="/login_locate_sso.do?sysparam_goto_url=/fellowship">Log In</a-->
+      <a ng-if="c.data.isLoggedIn" class="pull-right login" href="/logout.do?sysparm_goto_url=/fellowship">Log Out</a>
     </div>
   </div>
 </div>  

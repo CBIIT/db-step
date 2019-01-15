@@ -6,6 +6,9 @@
   /* widget controller */
   var c = this;
 	$scope.form = {
+		phd: '',
+		citizen: '',
+		permanent_resident: '',
 		name: '',
 		email: '',
 		phone: '',
@@ -53,6 +56,9 @@
 			});
 	}
 	function populateData(data){
+		$scope.form.phd = data.phd.toString();
+		$scope.form.citizen = data.citizen.toString();
+		$scope.form.permanent_resident = data.permanent_resident.toString();
 		$scope.form.name = data.name.toString();
 		$scope.form.email = data.email.toString();
 		$scope.form.phone = data.phone.toString();
@@ -67,6 +73,8 @@
 		$scope.form.attach_fileName1 = data.attch_name1.toString();
 		$scope.form.attach_id2 = data.attch_id2.toString();
 		$scope.form.attach_fileName2 = data.attch_name2.toString();
+		$scope.form.attach_id3 = data.attch_id3.toString();
+		$scope.form.attach_fileName3 = data.attch_name3.toString();
 	}
 	
 	$scope.back = function(){
@@ -100,7 +108,7 @@
         <sys_created_on>2019-01-09 14:55:02</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5a1f8c57db36230054d8ff621f9619b1</sys_id>
-        <sys_mod_count>98</sys_mod_count>
+        <sys_mod_count>106</sys_mod_count>
         <sys_name>BD Detail</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -108,7 +116,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_5a1f8c57db36230054d8ff621f9619b1</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-10 20:32:17</sys_updated_on>
+        <sys_updated_on>2019-01-14 16:26:47</sys_updated_on>
         <template><![CDATA[<div id="detailPage">
   <div ng-show="linkPage == true">
     <a href="fellowship?xpage=report">Report</a> > Application detail
@@ -126,7 +134,31 @@
           </div>
         </div>
         <div class="row" ng-show="noAccess == 'yes'">
-          <div class="col-md-12">
+            <div class="col-md-12">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Ph. D. </b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.phd}}
+            </div>  
+          </div>
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>US Citizen</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.citizen}}
+            </div>  
+          </div>          
+          <div class="col-md-12" style="margin-top:10px">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Permanent Resident</b>
+            </div>
+             <div class="col-md-6" style="margin-right:10px;">
+                {{form.permanent_resident}}
+            </div>  
+          </div>          
+          <div class="col-md-12" style="margin-top:10px">
              <div class="col-md-5" style="margin-left:10px;">
                <b>Name</b>
             </div>
@@ -227,9 +259,18 @@
             <div class="col-md-1" style="margin-right:10px;">
                <a href='sys_attachment.do?view=true&sys_id={{form.attach_id2}}' target='_BLANK'>View</a>
             </div>  
-
           </div> 
-          
+           <div class="col-md-12" style="margin-top:10px" ng-show="form.attach_id3.trim().length > 0">
+             <div class="col-md-5" style="margin-left:10px;">
+               <b>Support File 3</b>
+            </div>
+             <div class="col-md-5">
+                {{form.attach_fileName3}} 
+            </div>  
+            <div class="col-md-1" style="margin-right:10px;">
+               <a href='sys_attachment.do?view=true&sys_id={{form.attach_id3}}' target='_BLANK'>View</a>
+            </div>  
+          </div>           
         </div>
       </div>
      </div>
