@@ -5,7 +5,7 @@
         <new_lines_to_html>false</new_lines_to_html>
         <script><![CDATA[(function runMailScript(current, template, email, email_action, event) {
 	template.print("Dear " + current.name +"<br/><br/>");
-	template.print("Your application has been submitted successfully.<br/>");
+	template.print("Your application has been submitted successfully.<br/><br/>");
 	template.print("<table border='0' width='60%'>");
 	template.print("<tr><td width='25%'><b>Name</b></td><td width='75%'>" + current.name.toString() + "</td></tr>");
 	template.print("<tr><td><b>Email</b></td><td>" + current.email.toString() + "</td></tr>");
@@ -45,7 +45,7 @@
         <sys_created_on>2019-01-08 20:43:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>39251483db7ea30054d8ff621f9619ba</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>fellowship_requestor_email</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -53,6 +53,6 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sys_script_email_39251483db7ea30054d8ff621f9619ba</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-14 16:36:22</sys_updated_on>
+        <sys_updated_on>2019-01-15 21:50:29</sys_updated_on>
     </sys_script_email>
 </record_update>
