@@ -4,7 +4,9 @@
         <category>custom</category>
         <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.mid-font-size {
+	font-size: large;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -25,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -33,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-10 16:40:12</sys_updated_on>
+        <sys_updated_on>2019-01-15 22:43:16</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -43,54 +45,70 @@
   </div>
   <br/>
   <div class="row">
-     <div class="col-md-12">
+     <div class="col-md-12 mid-font-size">
        <p>
-         Recent advances in cancer biology have resulted in the need for increased statistical analysis of research data. The Statistical Analysis 
-         of Research Data (SARD) course will be held on January 8-9, 2019 from 9 a.m.-5 p.m. at the National Institutes of Health's Natcher Conference Center,
-         Balcony B on the Bethesda Campus. SARD is designed to provide an overview on the general principles of statistical analysis of research data. 
-         The course will be taught by Paul W. Thurman of Columbia University. The first day will feature univariate data analysis, including descriptive statistics, 
-         probability distributions, one- and two-sample inferential statistics. The second day will feature bivariate data analysis including bivariate statistics, 
-         linear regression non-parametric tools and goodness of fit tests. The participation of NIH clinical and postdoctoral fellows is encouraged.
+				 The complexity of oncology makes it a prime ﬁeld for data-driven research projects with the potential to greatly improve patient care. BD-STEP is a two-year fellowship 
+         opportunity that uses data science to advance cancer research and patient care. Competitively selected postdoctoral fellows work with VA Medical Center 
+         clinicians and interdisciplinary researchers to address important patient-centered health challenges. 
+       </p>
+       <br/>
+       <p>
+       BD-STEP offers  an avenue to access rich, diverse VA data resources, including diagnosis and treatment information from the VA Central Cancer Registry and longitudinal, 
+       clinical data from the VA’s national healthcare system. The combination of data access, academic mentorship, and clinical guidance allows fellows to formulate and address clinically important questions in cancer research. 
+       </p>
+       <br/>
+       <p>
+        Interested postdoctoral fellows should talk to their academic supervisors about the program, discussing the time commitment and their desire to participate. They should also consider the VA Medical Center 
+        locations to which accepted BD-STEP fellows will be appointed. For more program details, please visit <a hred='https://cssi.cancer.gov/bd-step' target='_BLANK'>https://cssi.cancer.gov/bd-step</a> 
+        and <a href='https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp' target='_BLANK'>https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp</a> 
        </p>
     </div>
   </div>
 	<br/>
   <div class="row">
     <div class="col-md-12">
-      <label><font size="5">Course Materials</font></label>
+      <label><font size="5">How to Apply</font></label>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-			<ul>
-        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20Agenda.pdf" target="_BLANK">Course Agenda</a></li>
-        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20First%20Assignment.pdf" target="_BLANK">SARD First Assignment.pdf</a></li>
-        <li><a href="https://events.cancer.gov/sites/default/files/assets/cct-sard/SARD%202019%20Thurman%20Bio.pdf" target="_BLANK">SARD Thurman Bio.pdf</a></li>
-      </ul>      
-    </div>
+    <div class="col-md-12 mid-font-size">
+      <ol>
+        <li>Please have your academic mentor (existing or planned research relationship) complete a letter of support for participation in the program. Note, applications will not be accepted without mentor’s approval.</li>
+        <li>
+          Complete application and submit the following materials:
+          <ul>
+            <li>Curriculum Vitae (CV)</li>
+            <li>A brief statement of interest (no more than one page) to include proposed research areas/topics</li>
+            <li>Letter of support from academic mentor</li>
+          </ul>
+        </li>
+      </ol>
+  	</div>
   </div>
   <br/>
   <div class="row">
-    <div class="col-md-12">
-      <label><font size="5">Location and Time</font></label>
+    <div class="col-md-12 mid-font-size">
+      <label><font size="5">Important Program Dates</font></label>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <p>
-        The sessions will start at 9 a.m. A lunch break will occur at 12 noon-1 p.m. The sessions will conclude at 5 p.m.
-      </p>
+    <div class="col-md-12 mid-font-size">
+      <div class="col-md-2">Deadline for Applications</div>
+      <div class="col-md-2">June 1, 2019</div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <p>
-				Registration Form: The deadline for registration is January 4, 2019. The first 50 registrants will be accommodated. 
-        The registration form is available online, click here to register. The course will be directed by Dr. Terry Moody, phone (240-276-7785).
-      </p>
+    <div class="col-md-12 mid-font-size">
+      <div class="col-md-2">Notification of selection</div>
+      <div class="col-md-2">June 22, 2019</div>
     </div>
   </div>
-  
-</div>]]></template>
+  <div class="row" style="margin-bottom:100px;">
+    <div class="col-md-12 mid-font-size">    
+      <div class="col-md-2">Kickoff event</div>
+      <div class="col-md-2">October 1, 2019</div>
+     </div>
+  </div>    
+]]></template>
     </sp_widget>
 </record_update>

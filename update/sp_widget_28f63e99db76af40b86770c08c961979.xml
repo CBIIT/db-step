@@ -295,6 +295,9 @@
 
 .bg-yellow {
   background-color: yellow;
+}
+.mid-font-size {
+  font-size: medium;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -318,7 +321,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>480</sys_mod_count>
+        <sys_mod_count>488</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -326,14 +329,14 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-14 20:06:51</sys_updated_on>
+        <sys_updated_on>2019-01-15 22:47:08</sys_updated_on>
         <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
   <br/>
   <div class="row">
     <div class="col-md-3">
-      <label style="margin-left: 30px;"><b>Are you a Ph.D.?</b></label>
+      <label style="margin-left: 30px;"><b>Not a Ph.D.?</b></label>
     </div>
     <div class="col-md-1">
       <input type="radio" name="phd" value="yes" ng-model="form.phd"/>&nbsp;Yes
@@ -344,24 +347,13 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <label style="margin-left: 30px; margin-top: 5px;"><b>Are you a USA Citizen?</b></label>
+      <label style="margin-left: 30px; margin-top: 5px;"><b>Not a Citizen?</b></label>
     </div>
     <div class="col-md-1">
       <input type="radio" name="citizen" value="yes" ng-model="form.citizen"/>&nbsp;Yes
     </div>
     <div class="col-md-1">
       <input type="radio" name="citizen" value="no" ng-model="form.citizen" />&nbsp;No
-    </div>
-  </div>  
-  <div class="row">
-    <div class="col-md-3">
-      <label style="margin-left: 30px; margin-top: 5px;"><b>Are you a Permanent Resident?</b></label>
-    </div>
-    <div class="col-md-1">
-      <input type="radio" name="greencard" value="yes" ng-model="form.greencard"/>&nbsp;Yes
-    </div>
-    <div class="col-md-1">
-      <input type="radio" name="greencard" value="no" ng-model="form.greencard" ng-click="displayMessage();"/>&nbsp;No
     </div>
   </div>  
   <div class="row"  ng-show="showError == true">
