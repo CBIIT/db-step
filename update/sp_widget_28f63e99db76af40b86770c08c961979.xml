@@ -2,14 +2,14 @@
 <record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope, BDSTEPUtil) {
-  /* widget controller */
-  var c = this;
+        <client_script><![CDATA[function($scope, spModal, spUtil, BDSTEPUtil) {
+	/* widget controller */
+	var c = this;
 	c.data.fileds = [];
 	c.data.sites = [];
-	
+
 	//ng-disabled="!((form.phd == 'yes' && form.citizen == 'yes') || (form.phd == 'yes' && form.greencard == 'yes'))"
-	
+
 	$scope.submitted = false;
 	$scope.showError = false;
 	$scope.form = {
@@ -28,7 +28,7 @@
 		thirdChoice: '',
 		other: ''
 	};
-	
+
 	loadSiteName();
 	loadFieldName();
 	
@@ -56,10 +56,10 @@
 				alert("ERROR!");
 				console.log(error);
 			});
-		  
+
 		}
 	}
-	
+
 	function uploadFile(id){
 		var file1 = $('#file')[0].files[0];
 		var file2 = $('#file1')[0].files[0];
@@ -75,7 +75,7 @@
 		}		
 		showMessage();
 		//upload file1
-	  function handleContents1(contents) {
+		function handleContents1(contents) {
 			var fileName = file1.name;
 			console.log(contents);
 			BDSTEPUtil.uploadAttachment(id, contents, fileName).then(function(res){
@@ -106,7 +106,7 @@
 			});
 		}		
 	}
-	
+
 	function showMessage(){
 		$('#info').html("<font color='green'>Your application has been submitted successfully.</font>");
 		$('#infoModal').modal('show');
@@ -125,47 +125,47 @@
 		$scope.form.thirdChoice = '';
 		$scope.form.other = '';
 		$scope.submitted = false;
-	  $scope.showError = false;
+		$scope.showError = false;
 	}
 	//return true shows there is an error
 	function validateInput(){
 		var file1 = $('#file')[0].files[0];
 		var file2 = $('#file1')[0].files[0];
 		var file3 = $('#file2')[0].files[0];
-    cleanBgColor();
+		cleanBgColor();
 		if($scope.form.phd.trim().length == 0 || $scope.form.name.trim().length == 0 || $scope.form.phone.trim().length == 0 || $scope.form.mailingAddress.trim().length == 0 ||
 			 $scope.form.citizen.trim().length == 0 || $scope.form.institution.trim().length == 0 || $scope.form.field.trim().length == 0 || $scope.form.experience.trim().length == 0 ||
 			 $scope.form.firstChoice.trim().length == 0 || file1 === undefined || file2 === undefined || file3 === undefined){
-			 if(file1 === undefined){
-				 $('#certificate_label').css('background-color', 'yellow');
-			 }
-			 if(file2 === undefined){
-				 $('#certificate_label1').css('background-color', 'yellow');
-			 }
-			 if(file3 === undefined){
-				 $('#certificate_label2').css('background-color', 'yellow');
-			 }
+			if(file1 === undefined){
+				$('#certificate_label').css('background-color', 'yellow');
+			}
+			if(file2 === undefined){
+				$('#certificate_label1').css('background-color', 'yellow');
+			}
+			if(file3 === undefined){
+				$('#certificate_label2').css('background-color', 'yellow');
+			}
 			if($scope.form.phd.trim().length == 0){
 				$('#phdLabel').css('background-color', 'yellow');
 			}
 			if($scope.form.citizen.trim().length == 0){
 				$('#citizenLabel').css('background-color', 'yellow');
 			}
-			
-			 return true;
+
+			return true;
 		}else{
 			return false;
 		}
 	}
 	function cleanBgColor(){
-		 $('#certificate_label').css('background-color', '');
-		 $('#certificate_label1').css('background-color', '');
-		 $('#certificate_label2').css('background-color', '');
-		 $('#phdLabel').css('background-color', '');
-		 $('#citizenLabel').css('background-color', '');
-		 $('#certificate_label').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Curriculum Vitae file to be uploaded</span>');
-		 $('#certificate_label1').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Personal Statement file to be uploaded</span>');
-		 $('#certificate_label2').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Letter of support from Supervisor file to be uploaded</span>');
+		$('#certificate_label').css('background-color', '');
+		$('#certificate_label1').css('background-color', '');
+		$('#certificate_label2').css('background-color', '');
+		$('#phdLabel').css('background-color', '');
+		$('#citizenLabel').css('background-color', '');
+		$('#certificate_label').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Curriculum Vitae file to be uploaded</span>');
+		$('#certificate_label1').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Personal Statement file to be uploaded</span>');
+		$('#certificate_label2').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Letter of support from Supervisor file to be uploaded</span>');
 	}
 	function loadFieldName(){
 		BDSTEPUtil.getFieldName().then(function(res){
@@ -185,49 +185,49 @@
 	}
 	var limitWord = 300;
 	$("#experience").keyup(function () {
-			$this = $(this);
-			var regex = /\s+/gi;
-			var wordcount = jQuery.trim($this.val()).replace(regex, ' ').split(' ').length;
-			if (wordcount <= limitWord) {
-					chars = $this.val().length;
-			} else {
-					var text = $(this).val();
-					var new_text = text.substr(0, chars);
-					$(this).val(new_text);
-					wordcount --;
-			}
-			$("#count-label").html(wordcount);
+		$this = $(this);
+		var regex = /\s+/gi;
+		var wordcount = jQuery.trim($this.val()).replace(regex, ' ').split(' ').length;
+		if (wordcount <= limitWord) {
+			chars = $this.val().length;
+		} else {
+			var text = $(this).val();
+			var new_text = text.substr(0, chars);
+			$(this).val(new_text);
+			wordcount --;
+		}
+		$("#count-label").html(wordcount);
 	});
-	
-		var fileInput  = document.querySelector( ".input-file" ),  
+
+	var fileInput  = document.querySelector( ".input-file" ),  
 			button     = document.querySelector( ".input-file-trigger" ),
 			fileDisplay     = $("#certificate_label");
-	  
-		fileInput.addEventListener( "change", function( event ) {
-			c.data.inputFile1 = this.value;
-			fileDisplay.html(this.value);
-			$scope.$apply();
-		});  
-	
-		var fileInput1  = document.querySelector( ".input-file1" ),  
+
+	fileInput.addEventListener( "change", function( event ) {
+		c.data.inputFile1 = this.value;
+		fileDisplay.html(this.value);
+		$scope.$apply();
+	});  
+
+	var fileInput1  = document.querySelector( ".input-file1" ),  
 			button1     = document.querySelector( ".input-file-trigger1" ),
 			fileDisplay1     = $("#certificate_label1");
-	  
-		fileInput1.addEventListener( "change", function( event ) {
-			c.data.inputFile2 = this.value;
-			fileDisplay1.html(this.value);
-			$scope.$apply();
-		});  
-	
-		var fileInput2  = document.querySelector( ".input-file2" ),  
+
+	fileInput1.addEventListener( "change", function( event ) {
+		c.data.inputFile2 = this.value;
+		fileDisplay1.html(this.value);
+		$scope.$apply();
+	});  
+
+	var fileInput2  = document.querySelector( ".input-file2" ),  
 			button2     = document.querySelector( ".input-file-trigger2" ),
 			fileDisplay2     = $("#certificate_label2");
-	  
-		fileInput2.addEventListener( "change", function( event ) {
-			c.data.inputFile3 = this.value;
-			fileDisplay2.html(this.value);
-			$scope.$apply();
-		}); 
+
+	fileInput2.addEventListener( "change", function( event ) {
+		c.data.inputFile3 = this.value;
+		fileDisplay2.html(this.value);
+		$scope.$apply();
+	}); 
 }
 
 ]]></client_script>
@@ -308,7 +308,7 @@
   background-color: yellow;
 }
 .mid-font-size {
-  font-size: medium;
+  font-size: small;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -332,7 +332,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>505</sys_mod_count>
+        <sys_mod_count>518</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -340,7 +340,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-16 14:52:07</sys_updated_on>
+        <sys_updated_on>2019-01-16 21:49:25</sys_updated_on>
         <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
@@ -545,7 +545,7 @@
       </div>  
     </div> 
   </div>
-  <div id="infoModal" class="modal fade">
+  <div id="infoModal" class="modal fade" data-backdrop="static">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

@@ -5,7 +5,7 @@
         <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
         <controller_as>c</controller_as>
         <css>.mid-font-size {
-	font-size: large;
+	font-size: medium;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -27,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-15 22:43:16</sys_updated_on>
+        <sys_updated_on>2019-01-16 18:38:40</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -93,20 +93,20 @@
   </div>
   <div class="row">
     <div class="col-md-12 mid-font-size">
-      <div class="col-md-2">Deadline for Applications</div>
-      <div class="col-md-2">June 1, 2019</div>
+      <div class="col-md-4">Deadline for Applications</div>
+      <div class="col-md-4">June 1, 2019</div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 mid-font-size">
-      <div class="col-md-2">Notification of selection</div>
-      <div class="col-md-2">June 22, 2019</div>
+      <div class="col-md-4">Notification of selection</div>
+      <div class="col-md-4">June 22, 2019</div>
     </div>
   </div>
   <div class="row" style="margin-bottom:100px;">
     <div class="col-md-12 mid-font-size">    
-      <div class="col-md-2">Kickoff event</div>
-      <div class="col-md-2">October 1, 2019</div>
+      <div class="col-md-4">Kickoff event</div>
+      <div class="col-md-4">October 1, 2019</div>
      </div>
   </div>    
 ]]></template>
