@@ -32,11 +32,14 @@
 	loadSiteName();
 	loadFieldName();
 	
-	$scope.displayMessage = function(){
-		$scope.form.phd = '';
-		$scope.form.citizen = '';
-		$scope.form.greencard = '';
-		$('#info').html("<font color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font>");
+	$scope.displayMessage = function(type){
+		if(type == 'phd'){
+			$('#info').html("<font size='3'>Please provide your expected PhD graduation date and a short description of the time you plan to spend on BD-STEP research!</font>");
+		}else if(type == 'citizen'){
+			$('#info').html("<font size='3'>Applicants must be US citizen to be hired within a VA facility. Non-citizens are also encouraged to apply, but are not eligible for VA stipend support!</font>");
+		}else {
+			$('#info').html("<font size='3' color='red'>You are not qualified to register the Big Data Scientist Training Enhancement Program !</font>");
+		}
 		$('#infoModal').modal('show');
 	}
 	$scope.submitForm = function(){
@@ -130,8 +133,8 @@
 		var file2 = $('#file1')[0].files[0];
 		var file3 = $('#file2')[0].files[0];
     cleanBgColor();
-		if($scope.form.name.trim().length == 0 || $scope.form.phone.trim().length == 0 || $scope.form.mailingAddress.trim().length == 0 ||
-			 $scope.form.institution.trim().length == 0 || $scope.form.field.trim().length == 0 || $scope.form.experience.trim().length == 0 ||
+		if($scope.form.phd.trim().length == 0 || $scope.form.name.trim().length == 0 || $scope.form.phone.trim().length == 0 || $scope.form.mailingAddress.trim().length == 0 ||
+			 $scope.form.citizen.trim().length == 0 || $scope.form.institution.trim().length == 0 || $scope.form.field.trim().length == 0 || $scope.form.experience.trim().length == 0 ||
 			 $scope.form.firstChoice.trim().length == 0 || file1 === undefined || file2 === undefined || file3 === undefined){
 			 if(file1 === undefined){
 				 $('#certificate_label').css('background-color', 'yellow');
@@ -142,6 +145,12 @@
 			 if(file3 === undefined){
 				 $('#certificate_label2').css('background-color', 'yellow');
 			 }
+			if($scope.form.phd.trim().length == 0){
+				$('#phdLabel').css('background-color', 'yellow');
+			}
+			if($scope.form.citizen.trim().length == 0){
+				$('#citizenLabel').css('background-color', 'yellow');
+			}
 			
 			 return true;
 		}else{
@@ -152,6 +161,8 @@
 		 $('#certificate_label').css('background-color', '');
 		 $('#certificate_label1').css('background-color', '');
 		 $('#certificate_label2').css('background-color', '');
+		 $('#phdLabel').css('background-color', '');
+		 $('#citizenLabel').css('background-color', '');
 		 $('#certificate_label').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Curriculum Vitae file to be uploaded</span>');
 		 $('#certificate_label1').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Personal Statement file to be uploaded</span>');
 		 $('#certificate_label2').html('<span style="color: #716f6f;font-weight: normal;margin-left: 10px;">Select Letter of support from Supervisor file to be uploaded</span>');
@@ -321,7 +332,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>488</sys_mod_count>
+        <sys_mod_count>505</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -329,36 +340,37 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-15 22:47:08</sys_updated_on>
+        <sys_updated_on>2019-01-16 14:52:07</sys_updated_on>
         <template><![CDATA[<form name="inputForm" ng-submit="submitForm()" novalidate>
   <br/><br/>
   <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Registration</font></label></div>
   <br/>
+  <div class="row"  ng-show="showError == true">
+    <div class="col-md-10" style="margin-left: 20px; margin-bottom:20px;"><font color='red'>Please fill in required fields.</font></div>>
+  </div>
+  
   <div class="row">
     <div class="col-md-3">
-      <label style="margin-left: 30px;"><b>Not a Ph.D.?</b></label>
+      <label style="margin-left: 30px;" id='phdLabel'><b>Not a Ph.D.?</b></label>
     </div>
     <div class="col-md-1">
-      <input type="radio" name="phd" value="yes" ng-model="form.phd"/>&nbsp;Yes
+      <input type="radio" name="phd" value="yes" ng-model="form.phd" />&nbsp;Yes
     </div>
     <div class="col-md-1">
-      <input type="radio" name="phd" value="no" ng-model="form.phd" ng-click="displayMessage();"/>&nbsp;No
+      <input type="radio" name="phd" value="no" ng-model="form.phd" ng-click="displayMessage('phd');"/>&nbsp;No
     </div>
   </div>
   <div class="row">
     <div class="col-md-3">
-      <label style="margin-left: 30px; margin-top: 5px;"><b>Not a Citizen?</b></label>
+      <label style="margin-left: 30px; margin-top: 5px;" id='citizenLabel'><b>Not a Citizen?</b></label>
     </div>
     <div class="col-md-1">
       <input type="radio" name="citizen" value="yes" ng-model="form.citizen"/>&nbsp;Yes
     </div>
     <div class="col-md-1">
-      <input type="radio" name="citizen" value="no" ng-model="form.citizen" />&nbsp;No
+      <input type="radio" name="citizen" value="no" ng-model="form.citizen" ng-click="displayMessage('citizen');"/>&nbsp;No
     </div>
   </div>  
-  <div class="row"  ng-show="showError == true">
-    <div class="col-md-10" style="margin-left: 20px;"><font color='red'>Please fill in required fields.</font></div>>
-  </div>
   <div class="row">
     <div class="col-md -12 panel panel-default" style="margin-top: 10px; margin-left: 40px; margin-right:40px;">
       <div class="panel-heading"><b>Your information</b></div>
@@ -542,7 +554,7 @@
           </button>
           <h4 id="lblTitleConfirmOk" class="modal-title">Information</h4>
         </div>
-        <div class="modal-body"  style="text-align:center;">
+        <div class="modal-body">
           <span id="info"></span>
         </div>
         <div class="modal-footer">
