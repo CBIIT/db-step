@@ -86,7 +86,7 @@ button{
         <sys_created_on>2019-01-03 22:00:58</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>0307fa19db76af40b86770c08c9619e2</sys_id>
-        <sys_mod_count>40</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>BD STEP Report</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -94,26 +94,26 @@ button{
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_0307fa19db76af40b86770c08c9619e2</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-10 16:39:44</sys_updated_on>
+        <sys_updated_on>2019-01-18 22:12:14</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
-  <div class="row" align="center"><label><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Report</font></label></div>
+  <div class="row" align="center"><font size="5" color="red">Big Data Scientist Training Enhancement Program (BD-STEP) - Report</font></div>
   <br/>
   <div class="row" ng-if="c.data.tasks.length == 0">
      <div class="col-md-10" align="center"><font size="4">No Application has been submitted</font></div>  
   </div>
   <div class="row" style="margin-bottom:5px;" ng-show="c.data.tasks.length > 0">
-     <div class="col-md-10"><b> Filter:</b> <input ng-model="search"></div>  
+     <div class="col-md-10"><b> <label for="searchField">Filter:</label></b> <input id="searchField" ng-model="search"></div>  
   </div>
   <div class="row">
     <div ng-if="c.data.tasks.length > 0" style="margin-left:10px; margin-right: 10px;">
         <div class="panel margin-bottom-small">
             <div class="panel-heading blue-panel" role="tab" id="heading_savedItems">
-                <h4 class="panel-title">
+                <h1 class="h4 panel-title">
                     <a role="button" data-toggle="collapse" data-target="#collapsesavedItems" aria-expanded="true" aria-controls="collapsesavedItems">
                   <span class="accordion_icon"><i class="fa fa-minus-square"></i></span> Submitted Applications <span class="badge" id="ritm_count">{{c.data.tasks.length}}</span>
                 </a>
-                </h4>
+                </h1>
             </div>
     
             <div id="collapsesavedItems" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading_savedItems">
@@ -143,9 +143,9 @@ button{
                             <td width="70%">
                                 <dir-pagination-controls pagination-id="taskDataPagination" direction-links="true" boundary-links="true"></dir-pagination-controls>
                             </td>
-                            <td width="25%" align="right"><label>Items per page&#160;&#160;</label></td>
+                            <td width="25%" align="right"><label for="page-size">Items per page&#160;&#160;</label></td>
                             <td width="5%" align="right">
-                                <select class="form-control" ng-model="pageSize" ng-init="pageSize='10'" style="width:80px;">
+                                <select class="form-control" id="page-size" ng-model="pageSize" ng-init="pageSize='10'" style="width:80px;">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>

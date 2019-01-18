@@ -27,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>35</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-16 18:38:40</sys_updated_on>
+        <sys_updated_on>2019-01-18 20:36:00</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -59,7 +59,7 @@
        <br/>
        <p>
         Interested postdoctoral fellows should talk to their academic supervisors about the program, discussing the time commitment and their desire to participate. They should also consider the VA Medical Center 
-        locations to which accepted BD-STEP fellows will be appointed. For more program details, please visit <a hred='https://cssi.cancer.gov/bd-step' target='_BLANK'>https://cssi.cancer.gov/bd-step</a> 
+        locations to which accepted BD-STEP fellows will be appointed. For more program details, please visit <a href='https://cssi.cancer.gov/bd-step' target='_BLANK'>https://cssi.cancer.gov/bd-step</a> 
         and <a href='https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp' target='_BLANK'>https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp</a> 
        </p>
     </div>
