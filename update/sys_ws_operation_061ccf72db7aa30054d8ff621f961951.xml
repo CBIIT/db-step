@@ -29,6 +29,10 @@
 	bdstepItem.phd = data.phd;
 	bdstepItem.citizen = data.citizen;
     bdstepItem.permanent_resident = data.greencard;
+	if(data.phd == 'no'){
+		bdstepItem.description_for_research = data.description.toString();
+		bdstepItem.phd_graduate_date = data.graduateDateString.toString();
+	}
 	var id = bdstepItem.insert();
 	retObj.id = id;
 	return retObj;
@@ -48,7 +52,7 @@
         <sys_created_on>2019-01-08 15:26:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>061ccf72db7aa30054d8ff621f961951</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>submitApplication</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -56,7 +60,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sys_ws_operation_061ccf72db7aa30054d8ff621f961951</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-10 16:50:33</sys_updated_on>
+        <sys_updated_on>2019-01-23 16:30:36</sys_updated_on>
         <web_service_definition display_value="Fellowship">b750d6e6dbba630054d8ff621f961926</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>

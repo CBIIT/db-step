@@ -41,7 +41,7 @@
         <sys_created_on>2019-01-03 20:39:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>9944ea59db36af40b86770c08c96198b</sys_id>
-        <sys_mod_count>50</sys_mod_count>
+        <sys_mod_count>52</sys_mod_count>
         <sys_name>DB STEP Header</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -49,7 +49,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_header_footer_9944ea59db36af40b86770c08c96198b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-15 17:40:08</sys_updated_on>
+        <sys_updated_on>2019-01-18 22:38:05</sys_updated_on>
         <template><![CDATA[<div id="bd-step-header">
   <div id="bd-step-logo">
     <div class="container logo">
@@ -61,12 +61,12 @@
       Big Data Scientist Training Enhancement Program
       <div class="dropdown pull-right" ng-show="!c.data.isLoggedIn">
         <button class="dropdown-toggle custom-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Login
+          Admin Login
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a class="" href="?id=bd_step_login">Log In (Internal)</a></li>
-          <li><a class="" href="?id=bd_step_login_external">Log In (External)</a></li>
+          <li><a class="" href="?id=bd_step_login">Admin Log In (Internal)</a></li>
+          <li><a class="" href="?id=bd_step_login_external">Admin Log In (External)</a></li>
         </ul>
       </div>
       <!--a ng-if="c.data.userName == 'guest'" class="pull-right login" href="/login_locate_sso.do?sysparam_goto_url=/fellowship">Log In</a-->
