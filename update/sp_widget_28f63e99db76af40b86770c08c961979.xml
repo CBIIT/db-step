@@ -150,13 +150,17 @@
 		$scope.form.graduateDate = new Date();
 		$scope.form.description = '';
 		$('#email').css('background-color', '');
+		c.data.file1 = '';
+		c.data.file2 = '';
+		c.data.file3 = '';
 	}
 	//return true shows there is an error
 	function isValid(){
 		var valid = Boolean($scope.form.phd && $scope.form.name && 
 							$scope.form.phone && $scope.form.mailingAddress && 
 							$scope.form.citizen && $scope.form.institution &&
-							$scope.form.email && $scope.form.field && 
+							$scope.form.email && $scope.validateEmail($scope.form.email) &&
+							$scope.form.field && 
 							$scope.form.experience && $scope.form.firstChoice && 
 							c.data.file1 && c.data.file2 && c.data.file3);
 		if(!valid){
@@ -164,18 +168,13 @@
 		}
 		if (valid && $scope.form.phd == 'no'){
 			valid = Boolean($scope.form.description);
-			$('#err').html("<font color='red'>Please fill in required fields.</font>");
 		}
-		if(valid && !ValidateEmail()){
-			valid = false;
-			$('#email').css('background-color', 'yellow');
-			$('#err').html("<font color='red'>Invalid Email Address</font>");
-		}
+		
 		return valid;
 	}
 	
-  function ValidateEmail(){
-		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.form.email)){
+  $scope.validateEmail = function(email){
+		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
 				return (true);
 			}
 				return (false);
@@ -205,6 +204,7 @@
 		c.data[id] = file;
 		$scope.$apply();
 	});
+	
 	
 	$scope.limitWordCount = function(name, limit) {
 		var text = $scope.form[name] || '';
@@ -274,6 +274,10 @@
 }
 .margin-left {
   margin-left: 10px;
+}
+
+.error {
+  color: red;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -297,7 +301,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>747</sys_mod_count>
+        <sys_mod_count>773</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -305,7 +309,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-23 19:35:02</sys_updated_on>
+        <sys_updated_on>2019-01-23 20:05:07</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
@@ -400,10 +404,13 @@
             </div>   
             <div class="row">
               <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                <label for="email" style="margin-left: 10px;"> <b><font color='red'>*</font>Email Address</b></label>
+                <label for="email" class="margin-left"> <b><font color='red'>*</font>Email Address</b></label>
               </div>
               <div class="col-xm-10 form-margin-right">
-                <input id="email" class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.email.$error.required}" style="margin-left: 10px;" type="text" name="email" ng-model="form.email" />
+                <input id="email" class="form-control"  required ng-class="{'bg-yellow': submitted && (!validateEmail(form.email) || inputForm.email.$error.required)}" style="margin-left: 10px;" type="text" name="email" ng-model="form.email" />
+                <div class="error margin-left" ng-if="submitted && form.email && !validateEmail(form.email)">
+                  Please enter a valid email address.
+                </div>
               </div>
             </div>
             <div class="row">
