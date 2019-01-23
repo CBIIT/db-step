@@ -196,6 +196,10 @@
 			console.log(error);
 		});
 	}
+	
+	$('.input-file').click(function() {
+		this.value = '';
+	})
 
 
 	$('.input-file').change(function() {
@@ -301,7 +305,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>773</sys_mod_count>
+        <sys_mod_count>779</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -309,7 +313,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-23 20:05:07</sys_updated_on>
+        <sys_updated_on>2019-01-23 20:26:20</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
