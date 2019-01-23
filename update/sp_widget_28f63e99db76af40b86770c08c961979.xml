@@ -149,18 +149,36 @@
 		$scope.form.graduateDateString = '';
 		$scope.form.graduateDate = new Date();
 		$scope.form.description = '';
+		$('#email').css('background-color', '');
 	}
 	//return true shows there is an error
 	function isValid(){
 		var valid = Boolean($scope.form.phd && $scope.form.name && 
 							$scope.form.phone && $scope.form.mailingAddress && 
 							$scope.form.citizen && $scope.form.institution &&
-							$scope.form.field && $scope.form.experience && $scope.form.firstChoice && 
+							$scope.form.email && $scope.form.field && 
+							$scope.form.experience && $scope.form.firstChoice && 
 							c.data.file1 && c.data.file2 && c.data.file3);
+		if(!valid){
+			$('#err').html("<font color='red'>Please fill in required fields.</font>");
+		}
 		if (valid && $scope.form.phd == 'no'){
 			valid = Boolean($scope.form.description);
+			$('#err').html("<font color='red'>Please fill in required fields.</font>");
+		}
+		if(valid && !ValidateEmail()){
+			valid = false;
+			$('#email').css('background-color', 'yellow');
+			$('#err').html("<font color='red'>Invalid Email Address</font>");
 		}
 		return valid;
+	}
+	
+  function ValidateEmail(){
+		 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($scope.form.email)){
+				return (true);
+			}
+				return (false);
 	}
 	
 	function loadFieldName(){
@@ -279,7 +297,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>730</sys_mod_count>
+        <sys_mod_count>747</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -287,7 +305,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-23 18:43:44</sys_updated_on>
+        <sys_updated_on>2019-01-23 19:35:02</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
@@ -295,7 +313,7 @@
   </h1>
   <br/>
   <div class="row"  ng-show="showError == true">
-    <div class="col-md-10" style="margin-left: 20px; margin-bottom:20px;"><font color='red'>Please fill in required fields.</font></div>>
+    <div class="col-md-10" style="margin-left: 20px; margin-bottom:20px;" id="err"><font color='red'>Please fill in required fields.</font></div>>
   </div>
   
   <fieldset class="row">
