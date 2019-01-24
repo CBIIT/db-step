@@ -3,7 +3,7 @@
     <sp_portal action="INSERT_OR_UPDATE">
         <css_variables/>
         <default>false</default>
-        <homepage display_value="db_step_main">c316ae59db36af40b86770c08c96197f</homepage>
+        <homepage display_value="bd_step_main">c316ae59db36af40b86770c08c96197f</homepage>
         <icon/>
         <kb_knowledge_base/>
         <kb_knowledge_page/>
