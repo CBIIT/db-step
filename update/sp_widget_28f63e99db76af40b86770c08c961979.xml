@@ -305,7 +305,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>779</sys_mod_count>
+        <sys_mod_count>787</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -313,7 +313,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-23 20:26:20</sys_updated_on>
+        <sys_updated_on>2019-01-25 17:36:05</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
@@ -435,7 +435,7 @@
             </div>
             <div class="row">
               <div class="col-xm-10 form-margin-right" style="margin-top:10px;">
-                <label for="institution" style="margin-left: 10px;"> <b><font color='red'>*</font>Affiliated Institution</b></label>
+                <label for="institution" style="margin-left: 10px;"> <b><font color='red'>*</font>Academic Institution</b></label>
               </div>
               <div class="col-xm-10 form-margin-right">
                 <input id="institution" class="form-control"  required ng-class="{'bg-yellow': submitted && inputForm.institution.$error.required}" style="margin-left: 10px;" type="text" name="institution" ng-model="form.institution" />
@@ -462,16 +462,16 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-xm-10 form-margin-left form-margin-right">
-                <label for="experience"> <b><font color='red'>*</font>Experience in bioinformatics, modeling, management of large datasets(300 words)</b></label>
+                <label for="experience"> <b><font color='red'>*</font>Please describe your coding proficiency (including language(s)) and your experience in bioinformatics, modeling, management of large datasets(150 words)</b></label>
               </div>
               <div class="col-xm-10 form-margin-left form-margin-right">
                 <textarea class="form-control resize-vertical"  required 
                           ng-class="{'bg-yellow': submitted && inputForm.experience.$error.required}" 
-                          rows="21" 
+                          rows="18" 
                           id="experience" 
                           name="experience" 
                           ng-model="form.experience"
-                          ng-change="limitWordCount('experience', 300);"></textarea>
+                          ng-change="limitWordCount('experience', 150);"></textarea>
                 	Word count: {{ form.experience ? form.experience.split(' ').length : 0 }}
               </div>
             </div>           
@@ -479,7 +479,7 @@
         </div>
         <div class="row" style="margin-top:10px">
           <div class="col-md-6">
-            <div>
+            <div style="margin-bottom: 10px;">
               <b><font color='red'>*</font>Upload Curriculum Vitae(CV), Personal Statement, and Letter of Support from Supervisor&nbsp;</b><img src="contextual_help.png" width="20px" height="20px" Alt="Help" Title="Brief statement of interest (maximum one page) to include proposed research areas/topics letter of support from acadamic mentor for postdoctoral research (existing or planned research relationship)"/>
             </div>
             <div class="form-section" style="margin-top:5px;">
@@ -524,7 +524,7 @@
           </div>
           <div class="col-md-6">
             <div class="row">
-              <div class="col-xm-12 form-margin-left" >
+              <div class="col-xm-12 form-margin-left" style="margin-bottom: 10px;" >
                 <lable><b>Please choose at least one of the BD-STEP VA medical center locations, with your first choice at the top. If you are only interested in matching with one VA site, list only one option.</b></lable>  
               </div>
             </div>

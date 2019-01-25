@@ -27,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-18 20:36:00</sys_updated_on>
+        <sys_updated_on>2019-01-25 17:23:25</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -86,18 +86,29 @@
   	</div>
   </div>
   <br/>
-  <div class="row">
+  <div class="row" align="center">
     <div class="col-md-12 mid-font-size">
       <label><font size="5">Important Program Dates</font></label>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12 mid-font-size">
-      <div class="col-md-4">Deadline for Applications</div>
-      <div class="col-md-4">June 1, 2019</div>
-    </div>
+  <div class="row" align="center">
+    <table align="center" class="table table-striped" style="width:50%">
+      <tr>
+      	<td width="50%">Deadline for Applications</td>
+        <td width="50%">June 1, 2019</td>
+      </tr>
+      <tr>
+      	<td width="50%">Notification of selection</td>
+        <td width="50%">June 22, 2019</td>
+      </tr>
+      <tr>
+      	<td width="50%">Kickoff event</td>
+        <td width="50%">October 1, 2019</td>
+      </tr>
+    </table>
   </div>
-  <div class="row">
+  
+  <!--div class="row">
     <div class="col-md-12 mid-font-size">
       <div class="col-md-4">Notification of selection</div>
       <div class="col-md-4">June 22, 2019</div>
@@ -108,7 +119,7 @@
       <div class="col-md-4">Kickoff event</div>
       <div class="col-md-4">October 1, 2019</div>
      </div>
-  </div>    
+  </div -->    
 ]]></template>
     </sp_widget>
 </record_update>

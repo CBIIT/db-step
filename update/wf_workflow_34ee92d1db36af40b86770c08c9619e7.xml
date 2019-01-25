@@ -32,12 +32,12 @@
         <sys_created_by>zhoujim@nih.gov</sys_created_by>
         <sys_created_on>2019-01-24 15:19:21</sys_created_on>
         <sys_id>b484a500db53af0054d8ff621f961970</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-24 15:19:59</sys_updated_on>
+        <sys_updated_on>2019-01-24 15:28:28</sys_updated_on>
         <table>x_naci_bd_step_db_step</table>
         <timezone/>
-        <validated>false</validated>
+        <validated>true</validated>
         <workflow display_value="BD STEP Workflow">34ee92d1db36af40b86770c08c9619e7</workflow>
     </wf_workflow_version>
     <wf_workflow action="INSERT_OR_UPDATE">
