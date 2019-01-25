@@ -27,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>40</sys_mod_count>
+        <sys_mod_count>43</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-25 17:23:25</sys_updated_on>
+        <sys_updated_on>2019-01-25 17:48:53</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -47,19 +47,21 @@
   <div class="row">
      <div class="col-md-12 mid-font-size">
        <p>
-				 The complexity of oncology makes it a prime ﬁeld for data-driven research projects with the potential to greatly improve patient care. BD-STEP is a two-year fellowship 
-         opportunity that uses data science to advance cancer research and patient care. Competitively selected postdoctoral fellows work with VA Medical Center 
-         clinicians and interdisciplinary researchers to address important patient-centered health challenges. 
+				 BD-STEP is a two-year fellowship opportunity managed jointly by the National Cancer Institute and the Veterans Health Administration that uses data science to 
+         improve outcomes for cancer patients. Competitively selected postdoctoral fellows work with VA Medical Center clinicians and interdisciplinary researchers to 
+         address important questions in cancer research and care. 
        </p>
        <br/>
        <p>
-       BD-STEP offers  an avenue to access rich, diverse VA data resources, including diagnosis and treatment information from the VA Central Cancer Registry and longitudinal, 
-       clinical data from the VA’s national healthcare system. The combination of data access, academic mentorship, and clinical guidance allows fellows to formulate and address clinically important questions in cancer research. 
+       BD-STEP offers an avenue to access rich, diverse cancer data resources, including diagnosis and treatment information from the VA Central Cancer 
+         Registry and longitudinal, clinical data from the VA’s national healthcare system. The combination of data access, academic mentorship, 
+         and clinical guidance allows fellows to formulate and collaboratively address clinically important cancer questions.
        </p>
        <br/>
        <p>
-        Interested postdoctoral fellows should talk to their academic supervisors about the program, discussing the time commitment and their desire to participate. They should also consider the VA Medical Center 
-        locations to which accepted BD-STEP fellows will be appointed. For more program details, please visit <a href='https://cssi.cancer.gov/bd-step' target='_BLANK'>https://cssi.cancer.gov/bd-step</a> 
+        Interested postdoctoral fellows should talk to their academic supervisors about the program, discussing the time commitment and their desire to participate. 
+         They should also consider the VA Medical Center locations where on-site training and research will occur for accepted BD-STEP fellows.  For more program details, 
+         please visit <a href='https://cssi.cancer.gov/bd-step' target='_BLANK'>https://cssi.cancer.gov/bd-step</a> 
         and <a href='https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp' target='_BLANK'>https://www.va.gov/oaa/specialfellows/programs/sf_bdstep.asp</a> 
        </p>
     </div>
@@ -73,13 +75,14 @@
   <div class="row">
     <div class="col-md-12 mid-font-size">
       <ol>
-        <li>Please have your academic mentor (existing or planned research relationship) complete a letter of support for participation in the program. Note, applications will not be accepted without mentor’s approval.</li>
+        <li>Please have your academic mentor (existing or planned research relationship) complete a letter of support for participation in the program. Note, applications will not be accepted without mentor’s endorsement.</li>
+        <li>Compose a brief statement (no more than one page) describing interest and fit within the program, including proposed research areas and topics.</li>
         <li>
           Complete application and submit the following materials:
           <ul>
-            <li>Curriculum Vitae (CV)</li>
-            <li>A brief statement of interest (no more than one page) to include proposed research areas/topics</li>
             <li>Letter of support from academic mentor</li>
+            <li>Statement of interest</li>
+            <li>Curriculum Vitae (CV)</li>
           </ul>
         </li>
       </ol>
@@ -99,7 +102,7 @@
       </tr>
       <tr>
       	<td width="50%">Notification of selection</td>
-        <td width="50%">June 22, 2019</td>
+        <td width="50%">July, 2019</td>
       </tr>
       <tr>
       	<td width="50%">Kickoff event</td>
