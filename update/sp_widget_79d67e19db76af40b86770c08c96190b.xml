@@ -27,7 +27,7 @@
         <sys_created_on>2019-01-03 22:00:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>79d67e19db76af40b86770c08c96190b</sys_id>
-        <sys_mod_count>43</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>BD STEP home</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -35,7 +35,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_79d67e19db76af40b86770c08c96190b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-25 17:48:53</sys_updated_on>
+        <sys_updated_on>2019-01-28 15:34:49</sys_updated_on>
         <template><![CDATA[<div>
   <br/><br/>
   <div class="row">
@@ -49,13 +49,9 @@
        <p>
 				 BD-STEP is a two-year fellowship opportunity managed jointly by the National Cancer Institute and the Veterans Health Administration that uses data science to 
          improve outcomes for cancer patients. Competitively selected postdoctoral fellows work with VA Medical Center clinicians and interdisciplinary researchers to 
-         address important questions in cancer research and care. 
-       </p>
-       <br/>
-       <p>
-       BD-STEP offers an avenue to access rich, diverse cancer data resources, including diagnosis and treatment information from the VA Central Cancer 
+         address important questions in cancer research and care. The program offers an avenue to access rich, diverse cancer data resources, including diagnosis and treatment information from the VA Central Cancer 
          Registry and longitudinal, clinical data from the VA’s national healthcare system. The combination of data access, academic mentorship, 
-         and clinical guidance allows fellows to formulate and collaboratively address clinically important cancer questions.
+         and clinical guidance equips BD-STEP graduates with the diverse skillsets they need to pursue careers in healthcare data science.
        </p>
        <br/>
        <p>
