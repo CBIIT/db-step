@@ -305,7 +305,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>787</sys_mod_count>
+        <sys_mod_count>789</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -313,7 +313,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-25 17:36:05</sys_updated_on>
+        <sys_updated_on>2019-02-21 14:57:42</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
@@ -381,7 +381,7 @@
   </fieldset>  
     <div class="row" ng-show="form.citizen == 'no'">
       <div class="col-md-12" style="margin-left: 30px;">
-        <font size="3"><b>Applicants must be US citizen to be hired within a VA facility. Non-citizens are also encouraged to apply, but are not eligible for VA stipend support</b></font>
+        <font size="3"><b>Applicants must be US citizens to be hired within a VA facility. Non-citizens are also encouraged to apply, but are not eligible for VA stipend support</b></font>
       </div>    
     </div>
   <div class="row">
@@ -462,7 +462,7 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-xm-10 form-margin-left form-margin-right">
-                <label for="experience"> <b><font color='red'>*</font>Please describe your coding proficiency (including language(s)) and your experience in bioinformatics, modeling, management of large datasets(150 words)</b></label>
+                <label for="experience"> <b><font color='red'>*</font>Please describe your coding proficiency (including language(s)) and experience in bioinformatics, modeling, or management of large datasets (150 words)</b></label>
               </div>
               <div class="col-xm-10 form-margin-left form-margin-right">
                 <textarea class="form-control resize-vertical"  required 
