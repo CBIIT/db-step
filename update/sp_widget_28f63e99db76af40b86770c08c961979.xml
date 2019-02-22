@@ -305,7 +305,7 @@
         <sys_created_on>2019-01-03 22:00:32</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>28f63e99db76af40b86770c08c961979</sys_id>
-        <sys_mod_count>789</sys_mod_count>
+        <sys_mod_count>791</sys_mod_count>
         <sys_name>BD STEP Registration</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -313,7 +313,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_28f63e99db76af40b86770c08c961979</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-02-21 14:57:42</sys_updated_on>
+        <sys_updated_on>2019-02-22 20:33:03</sys_updated_on>
         <template><![CDATA[<form name="inputForm" novalidate>
   <br/><br/>
   <h1 class="h2 row" align="center">
@@ -462,7 +462,7 @@
           <div class="col-md-6">
             <div class="row">
               <div class="col-xm-10 form-margin-left form-margin-right">
-                <label for="experience"> <b><font color='red'>*</font>Please describe your coding proficiency (including language(s)) and experience in bioinformatics, modeling, or management of large datasets (150 words)</b></label>
+                <label for="experience"> <b><font color='red'>*</font>Please describe your coding proficiency (including language(s)) and experience in bioinformatics, modeling, or management of large datasets (150 words maximum)</b></label>
               </div>
               <div class="col-xm-10 form-margin-left form-margin-right">
                 <textarea class="form-control resize-vertical"  required 
@@ -480,7 +480,7 @@
         <div class="row" style="margin-top:10px">
           <div class="col-md-6">
             <div style="margin-bottom: 10px;">
-              <b><font color='red'>*</font>Upload Curriculum Vitae(CV), Personal Statement, and Letter of Support from Supervisor&nbsp;</b><img src="contextual_help.png" width="20px" height="20px" Alt="Help" Title="Brief statement of interest (maximum one page) to include proposed research areas/topics letter of support from acadamic mentor for postdoctoral research (existing or planned research relationship)"/>
+              <b><font color='red'>*</font>Upload Curriculum Vitae(CV), Personal Statement, and Letter of Support from Supervisor&nbsp;</b><img src="contextual_help.png" width="20px" height="20px" Alt="Help" Title="The personal statement should be a brief statement of interest (no more than one page) including proposed research areas/topics. The letter of support should come from an academic mentor (existing or planned research relationship)."/>
             </div>
             <div class="form-section" style="margin-top:5px;">
               <div class="file-section">
