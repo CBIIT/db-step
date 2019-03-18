@@ -41,7 +41,7 @@
         <sys_created_on>2019-01-03 20:39:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>9944ea59db36af40b86770c08c96198b</sys_id>
-        <sys_mod_count>53</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>DB STEP Header</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -49,7 +49,7 @@
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_header_footer_9944ea59db36af40b86770c08c96198b</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-25 17:33:20</sys_updated_on>
+        <sys_updated_on>2019-02-26 18:17:17</sys_updated_on>
         <template><![CDATA[<div id="bd-step-header">
   <div id="bd-step-logo">
     <div class="container logo">
@@ -69,8 +69,7 @@
           <li><a class="" href="?id=bd_step_login_external">Login (External)</a></li>
         </ul>
       </div>
-      <!--a ng-if="c.data.userName == 'guest'" class="pull-right login" href="/login_locate_sso.do?sysparam_goto_url=/fellowship">Log In</a-->
-      <a ng-if="c.data.isLoggedIn" class="pull-right login" href="/logout.do?sysparm_goto_url=/fellowship">Log Out</a>
+      <a ng-if="c.data.isLoggedIn" class="pull-right login" href="/logout.do?sysparm_goto_url=/bd-step">Log Out</a>
     </div>
   </div>
 </div>  

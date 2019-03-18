@@ -6,7 +6,7 @@
 
 	var c = this;
 	c.remember_me = c.data.forgetMeDefault;
-	c.redirect_url = '/fellowship';
+	c.redirect_url = '/bd-step';
 	
 	if (c.data.isLoggedIn) {
 		window.location.href = c.redirect_url;
@@ -179,7 +179,7 @@ label[for="password"] {&#13;
         <sys_created_on>2019-01-15 16:48:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>59922b89dbc3a700b86770c08c9619cc</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>39</sys_mod_count>
         <sys_name>BD Step External Login Widget</sys_name>
         <sys_package display_value="BD STEP" source="x_naci_bd_step">12dec3d8dbba2f4054d8ff621f961941</sys_package>
         <sys_policy/>
@@ -187,7 +187,7 @@ label[for="password"] {&#13;
         <sys_scope display_value="BD STEP">12dec3d8dbba2f4054d8ff621f961941</sys_scope>
         <sys_update_name>sp_widget_59922b89dbc3a700b86770c08c9619cc</sys_update_name>
         <sys_updated_by>zhoujim@nih.gov</sys_updated_by>
-        <sys_updated_on>2019-01-15 17:37:31</sys_updated_on>
+        <sys_updated_on>2019-02-25 20:45:20</sys_updated_on>
         <template><![CDATA[<div ng-if="c.data.isLoggedIn">
   <h2 class="text-center vertical-margins">
     Please Wait...
